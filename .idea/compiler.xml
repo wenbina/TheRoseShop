@@ -13,5 +13,9 @@
         <module name="Rose-Show" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SSM-Service" target="1.5" />
+      <module name="SSM-Ul" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
