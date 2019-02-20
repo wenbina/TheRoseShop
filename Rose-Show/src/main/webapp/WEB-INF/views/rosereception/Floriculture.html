@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>野兽派-花艺</title>
+		<link rel="shortcut icon" href="../../../brutalism/brutalismFrontImg/globalImg/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../../../brutalism/css/Floriculture.css" />
+		<link rel="stylesheet" href="../../../brutalism/font-awesome-4.7.0/css/font-awesome.css">
+		<style>
+			.roseMenu_container{
+				text-align: center;
+			}
+            .menuA1:hover, .menuA2:hover, .menuA3:hover, .menuA4:hover, .menuA5:hover, .menuA6:hover, .menuA7:hover, .menuA8:hover, .menuA9:hover, .menuA10:hover, .menuA11:hover, .menuA12:hover {
+                border-bottom-style: solid;
+            }
+		</style>
+	</head>
+
+	<body>
+		<div class="roseMain">
+			<!--头部-->
+			<div class="roseTitle">
+				<div class="roseLogin">欢迎来到 THE BEAST 野兽派！<a href="/reception/brutalism_login">登录</a> <a href="/reception/brutalism_register">注册</a></div>
+				<div class="roseLogo">
+					<a href="/reception/index"><div class="roseLogo_box"></div></a>
+				</div>
+				<div class="roseSearch">
+					<div class="roseSearchForm">
+						<input type="button" class="search_post">
+						<input type="text" placeholder="新品推荐" class="searchInput" />
+						<a href="/reception/shopcart"><i class="fa fa-cart-arrow-down fa-2x shopping_car" aria-hidden="true"></i></a>
+					</div>
+				</div>
+			</div>
+			<!--end-->
+            <!--主页--菜单-->
+            <div class="roseMenu_container">
+                <li class="menuA1">
+                    <a href="/reception/floriculture">
+                        what's new<br/>
+                        新鲜上架
+                    </a>
+                </li>
+                <li class="menuA2">
+                    <a href="/reception/floriculture">
+                        Flora<br/>
+                        花艺
+                    </a>
+                </li>
+                <li class="menuA3">
+                    <a href="index.html">
+                        what's new<br/>
+                        新鲜上架
+                    </a>
+                </li>
+                <li class="menuA4">
+                    <a href="index.html">
+                        Home Textile<br/>
+                        家纺
+                    </a>
+                </li>
+                <li class="menuA5">
+                    <a href="index.html">
+                        Furniture<br/>
+                        家具
+                    </a>
+                </li>
+                <li class="menuA6">
+                    <a href="index.html">
+                        Décor & Tabletop<br/>
+                        家饰&服饰
+                    </a>
+                </li>
+                <li class="menuA7">
+                    <a href="index.html">
+                        Beauty<br/>
+                        美妆个护
+                    </a>
+                </li>
+                <li class="menuA8">
+                    <a href="index.html">
+                        Fragrance<br/>
+                        香氛
+                    </a>
+                </li>
+                <li class="menuA9">
+                    <a href="index.html">
+                        Jewelry & Accessories<br/>
+                        珠宝配饰
+                    </a>
+                </li>
+                <li class="menuA10">
+                    <a href="index.html">
+                        Lingerie<br/>
+                        家居服
+                    </a>
+                </li>
+                <li class="menuA11">
+                    <a href="index.html">
+                        Gifts<br/>
+                        礼物
+                    </a>
+                </li>
+                <li class="menuA12">
+                    <a href="index.html">
+                        Stores<br/>
+                        实体店
+                    </a>
+                </li>
+            </div>
+			<!--内容-->
+			<div class="product_tag_list">
+				<div class="tag_warp product_tag clearfix">
+					<div class="product_tag_brand">
+						品牌:
+					</div>
+					<ul class="product_tag_item">
+						<li>Bao Bao Wan<i></i></li>
+						<li>BEAST × GUERLAIN<i></i></li>
+						<li>BLEU BLEUET<i></i></li>
+						<li>GLAM EVER<i></i></li>
+						<li>JANAVI<i></i></li>
+						<li>JEWELVARY<i></i></li>
+						<li>LA PERLA<i></i></li>
+						<li>Le Petit Prince<i></i></li>
+						<li>LITTLE B<i></i></li>
+						<li>MANITO<i></i></li>
+						<li>QEELIN<i></i></li>
+						<li>Sempre<i></i></li>
+						<li>SWAROVSKI×The Beast<i></i></li>
+						<li>T-B-H<i></i></li>
+						<li>THE BEAST<i></i></li>
+						<li>The Beast×Le Petit Prince<i></i></li>
+						<li>The Damn Colorful World<i></i></li>
+						<li>URBAN GREEN MAKERS<i></i></li>
+					</ul>
+					<div class="show_more" style="display: block;">更多<i></i></div>
+				</div>
+				<div class="tag_warp product_tag clearfix">
+					<div class="product_tag_brand">
+						标签:
+					</div>
+					<ul class="product_tag_item">
+						<li>T-B-H<i></i></li>
+					</ul>
+					<div class="show_more">更多<i></i></div>
+				</div>
+				<div class="tag_order product_tag clearfix">
+					<div class="product_tag_brand">
+						排序:
+					</div>
+					<ul class="product_tag_item">
+						<li class="active" data-type="">默认排序</li>
+						<li data-type="time">按时间排序</li>
+						<li data-type="price" data-order="asc">按价格从低到高</li>
+						<li data-type="price" data-order="desc">按价格从高到低</li>
+					</ul>
+				</div>
+			</div>
+			<!--商品信息-->
+			<div id="product_list" class="center">
+				<div class="block_product left product" v-for="(item,index) in product">
+					<a href="/reception/detailed" title="“梦里数钱”新年开运礼盒" target="_blank">
+						<img class="lazy" v-bind:src="'../../../brutalism/brutalismFrontImg/goodsImg/flower/longBox/'+item.picture" alt="“梦里数钱”新年开运礼盒" width="300" height="313"></a>
+					<h2 class="product-name clearfix">
+						<a href="#" title="“梦里数钱”新年开运礼盒" target="_blank">
+							<span>{{item.beast}}</span>
+							<span class="name">{{item.name}}</span>
+							<span style="color:#b4b4b4">{{item.speech}}</span>
+							<span class="price">{{item.price}}</span>
+						</a>
+					</h2>
+				</div>
+				<!--<div class="block_product left">
+					<a href="#" title="“梦里数钱”新年开运礼盒" target="_blank">
+						<img class="lazy" src="../../../brutalism/img/Floriculture01.jpg" alt="“梦里数钱”新年开运礼盒" width="300" height="313"></a>
+					<h2 class="product-name clearfix">
+						<a href="#" title="“梦里数钱”新年开运礼盒" target="_blank">
+							<span>THE BEAST</span>
+							<span class="name">“梦里数钱”新年开运礼盒</span>
+							<span style="color:#b4b4b4"></span>
+							<span class="price">¥338.00</span>
+						</a>
+					</h2>
+				</div>
+				<div class="block_product left">
+					<a href="#" title="“梦里数钱”新年开运礼盒" target="_blank">
+						<img class="lazy" src="img/Floriculture01.jpg" alt="“梦里数钱”新年开运礼盒" width="300" height="313"></a>
+					<h2 class="product-name clearfix">
+						<a href="#" title="“梦里数钱”新年开运礼盒" target="_blank">
+							<span>THE BEAST</span>
+							<span class="name">“梦里数钱”新年开运礼盒</span>
+							<span style="color:#b4b4b4"></span>
+							<span class="price">¥338.00</span>
+						</a>
+					</h2>
+				</div>-->
+				<!--循环-->
+				
+			</div>
+			<!--主页--底部-->
+			<div class="rose_foot">
+				<ul class="footer-ul">
+					<dl>
+						<dt>野兽VIP</dt>
+						<dd>
+							<a href="/autopage/member-policy.htm">野兽派会员中心</a>
+						</dd>
+						<dd>
+							<a href="/autopage/questions.htm">常见问题（新）</a>
+						</dd>
+						<dd>
+							<a>集团采购（建设中）</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>配送方式</dt>
+						<dd>
+							<a href="/staticpage/delivery.htm">配送时间</a>
+						</dd>
+						<dd>
+							<a href="/staticpage/delivery.htm">配送范围</a>
+						</dd>
+						<dd>
+							<a href="/staticpage/delivery.htm">配送收费标准</a>
+						</dd>
+						<dd>
+							<a href="/staticpage/delivery.htm">快递查询</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>支付方式</dt>
+						<dd>
+							<a href="/staticpage/howtopay.htm">支付宝 / 微信支付</a>
+						</dd>
+
+						<dd>
+							<a href="/staticpage/howtopay.htm">实体店支付</a>
+						</dd>
+						<dd>
+							<a href="/staticpage/howtopay.htm">优惠券使用</a>
+						</dd>
+						<dd>
+							<a href="/autopage/gift-card.htm">礼品卡支付</a>
+						</dd>
+					</dl>
+					<dl class="last">
+						<dt>售后服务</dt>
+						<dd>
+							<a href="/autopage/pc-returnpolicy.htm">退换货流程及退款</a>
+						</dd>
+						<dd>
+							<a href="/autopage/pc-orderupdate.htm">订单修改及发票</a>
+						</dd>
+						<dd>
+							<a href="/autopage/pc-servicecenter.htm">客服联系方式</a>
+						</dd>
+						<dd style="color: red">
+							<a href="/autopage/htpc-qa.htm">跨境购说明</a>
+						</dd>
+					</dl>
+				</ul>
+				<div class="footer-right">
+					<div class="qr-code ">
+						<h5>老板娘订阅号</h5>
+						<img src="../../../brutalism/img/qd-code2.jpg" alt="二维码" />
+					</div>
+					<div class="qr-code ">
+						<h5>老板娘订阅号</h5>
+						<img src="../../../brutalism/img/qd-code2.jpg" alt="二维码" />
+					</div>
+				</div>
+
+			</div>
+			<!--end-->
+			<div class="rosetime">任何问题，扫描微信二维码，联系在线客服。 工作时间：周一至周五9:00-21:00；周六、周日 10:00-18:00，法定节假日休息</div>
+
+			<!--版权底部-->
+			<div class="footer">
+				<p>关于我们 | 加入我们 | 合作联系 | 隐私权声明 | 上海布鲁爱电子商务有限公司
+				</p>
+				<p>Copyright ©野兽派2011-2018，All Rights Reserved | 沪ICP备12032741号</p>
+			</div>
+			<!--end-->
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="../../../brutalism/js/jquery-1.11.3.js" ></script>
+<script type="text/javascript" src="../../../brutalism/js/vue.min.js" ></script>
+<script type="text/javascript">
+	var vm=new Vue({
+		el:"#product_list",
+		data:{
+			product:[{
+				picture:"flower1.jpg",
+				beast:"THE BEAST",
+				name:"亚克力星空枪炮花盒-淑女杀手（20支）",
+				speech:"易烊千玺同款花盒",
+				price:"¥2880.00"
+			},{
+				picture:"flower2.jpg",
+				beast:"THE BEAST",
+				name:"玫瑰多重奏-爱在每一天（16支）",
+				speech:"",
+				price:"¥1520.00"
+			},{
+				picture:"flower3.jpg",
+				beast:"THE BEAST",
+				name:"弗洛伊德（16支）",
+				speech:"经典玫红色枪炮玫瑰",
+				price:"¥1314.00"
+			},{
+				picture:"flower4.jpg",
+				beast:"THE BEAST",
+				name:"玫瑰二重奏-爱在黎明（16支）",
+				speech:"限量款拼色玫瑰",
+				price:"¥1314.00"
+			},{
+				picture:"flower5.jpg",
+				beast:"THE BEAST",
+				name:"玫瑰多重奏-爱在每一天（16支）",
+				speech:"",
+				price:"¥1520.00"
+			},{
+				picture:"flower6.jpg",
+				beast:"THE BEAST",
+				name:"玫瑰二重奏-爱在午夜（16支）",
+				speech:"限量款拼色玫瑰",
+				price:"¥1314.00"
+			},{
+				picture:"flower7.jpg",
+				beast:"THE BEAST",
+				name:"希望（12支）",
+				speech:"稀有粉白渐变枪炮玫瑰",
+				price:"¥990.00"
+			},{
+				picture:"flower8.jpg",
+				beast:"THE BEAST",
+				name:"北极星（12支）",
+				speech:"经典象牙白枪炮玫瑰",
+				price:"¥990.00"
+			},{
+				picture:"flower9.jpg",
+				beast:"THE BEAST",
+				name:"我已爱上你（12支）",
+				speech:"珍贵蓝粉白三色玫瑰",
+				price:"¥990.00"
+			},{
+				picture:"flower10.jpg",
+				beast:"THE BEAST",
+				name:"淑女杀手（12支）",
+				speech:"经典红色枪炮玫瑰",
+				price:"¥990.00"
+			},{
+				picture:"flower11.jpg",
+				beast:"THE BEAST",
+				name:"淑女杀手（16支）",
+				speech:"经典红色枪炮玫瑰",
+				price:"¥1314.00"
+			},{
+				picture:"flower12.jpg",
+				beast:"THE BEAST",
+				name:"弗洛伊德（12支）",
+				speech:"经典玫红色枪炮玫瑰",
+				price:"¥990.00"
+			},{
+				picture:"flower13.jpg",
+				beast:"THE BEAST",
+				name:"我把天空送给你（12支）",
+				speech:"珍贵蓝白双色玫瑰",
+				price:"¥990.00"
+			},{
+				picture:"flower14.jpg",
+				beast:"THE BEAST",
+				name:"“方耳朵熊守护你”淑女杀手枪炮礼盒（16支）",
+				speech:"明星组合俘获她的芳心",
+				price:"¥1520.00"
+			}]
+		}
+	});
+</script>
