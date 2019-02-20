@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf.theroseshop.dao.ImmortalDao">
+    <!--永生花模糊查询和分页-->
+    <select id="getAll" resultType="Immortal">
+        SELECT
+        immortal.immortal_id,
+        immortal.immortal_code,
+        immortal.immortal_name,
+        immortal.immortal_content,
+        immortal.immortal_price,
+        immortal.immortal_reason,
+        immortal.immortal_composition,
+        immortal.immortal_story,
+        immortal.immortal_explain,
+        immortal.immortal_stock,
+        immortal.immortal_sale,
+        supplierinfo.Supplier_id
+        FROM
+        immortal
+        INNER JOIN supplierinfo ON immortal.immortal_supplier = supplierinfo.Supplier_id
+        <where>
+            <if test="immortal_name!=null and immortal_name!=''">
+                or immortal_name like concat(concat('%',#{immortal_name}),'%')
+            </if>
+            <if test="immortal_price!=null and immortal_price!=''">
+                or immortal_price like concat(concat('%',#{immortal_price}),'%')
+            </if>
+        </where>
+        order by immortal.immortal_id asc
+        limit #{page},#{limit}
+    </select>
+
+    <!--添加永生花-->
+    <insert id="insert" parameterType="Immortal">
+      insert into immortal(immortal_code,immortal_name,immortal_content,immortal_price,immortal_reason,immortal_composition,immortal_story,immortal_explain,immortal_stock,immortal_sale,immortal_supplier)
+      values (#{immortal_code},#{immortal_name},#{immortal_content},#{immortal_price},#{immortal_reason},#{immortal_composition},#{immortal_story},#{immortal_explain},#{immortal_stock},#{immortal_sale},#{immortal_supplier})
+    </insert>
+
+    <!--修改永生花-->
+    <update id="updata" parameterType="Immortal">
+      update immortal
+      <set>
+          <if test="immortal_code!=null and immortal_code!=''">
+              immortal_code=#{immortal_code},
+          </if>
+          <if test="immortal_name!=null and immortal_name!=''">
+              immortal_name=#{immortal_name},
+          </if>
+          <if test="immortal_content!=null and immortal_content!=''">
+              immortal_content=#{immortal_content},
+          </if>
+          <if test="immortal_price!=null and immortal_price!=''">
+              immortal_price=#{immortal_price},
+          </if>
+          <if test="immortal_reason!=null and immortal_reason!=''">
+              immortal_reason=#{immortal_reason},
+          </if>
+          <if test="immortal_composition!=null and immortal_composition!=''">
+              immortal_composition=#{immortal_composition},
+          </if>
+          <if test="immortal_story!=null and immortal_story!=''">
+              immortal_story=#{immortal_story},
+          </if>
+          <if test="immortal_explain!=null and immortal_explain!=''">
+              immortal_explain=#{immortal_explain},
+          </if>
+          <if test="immortal_stock!=null and immortal_stock!=''">
+              immortal_stock=#{immortal_stock},
+          </if>
+          <if test="immortal_sale!=null and immortal_sale!=''">
+              immortal_sale=#{immortal_sale},
+          </if>
+          <if test="immortal_supplier!=null and immortal_supplier!=''">
+              immortal_supplier=#{immortal_supplier}
+          </if>
+      </set>
+      where immortal_id=#{immortal_id}
+    </update>
+
+    <!--单删除永生花-->
+    <delete id="deleteid">
+      delete from immortal where immortal_id=#{immortal_id}
+    </delete>
+
+    <!--多删除永生花-->
+    <delete id="deleteids"  parameterType="int">
+       delete from immortal
+       where immortal_id in
+       <foreach collection="immortal_id" open="(" item="immortal_id" separator="," close=")">
+          #{immortal_id}
+       </foreach>
+    </delete>
+</mapper>
