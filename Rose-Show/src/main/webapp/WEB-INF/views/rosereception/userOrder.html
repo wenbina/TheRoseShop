@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>我的订单</title>
+    <link rel="stylesheet" href="../../../brutalism/css/paging.css">
+    <link rel="stylesheet" href="../../../brutalism/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="shortcut icon" href="../../../brutalism/brutalismFrontImg/globalImg/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../brutalism/css/info.css"/>
+    <style>
+        button {
+            background: #4f92cc;
+            border-radius: 5px;
+            color: white;
+            border: none;
+            margin: 5px 3px 0 3px;
+            width: 50px;
+            height: 20px;
+        }
+
+        #tbList{
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        #tbList tr:nth-child(odd) {
+            background: #f1f1f1;
+        }
+
+        #tbList tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        #tbList tr:hover {
+            background: #d6d6d6;
+        }
+    </style>
+</head>
+<body>
+<div class="roseMain">
+    <!--头部-->
+    <div class="roseTitle">
+        <div class="roseLogin">欢迎来到 THE BEAST 野兽派！<a href="/reception/brutalism_login">登录</a> <a
+                href="/reception/brutalism_register">注册</a></div>
+        <div class="roseLogo">
+            <a href="/reception/index"><div class="roseLogo_box"></div></a>
+        </div>
+        <div class="roseSearch">
+            <div class="roseSearchForm">
+                <input type="button" class="search_post">
+                <input type="text" placeholder="新品推荐" class="searchInput"/>
+                <a href="/reception/shopcart"><i class="fa fa-cart-arrow-down fa-2x shopping_car"
+                                                 aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--个人中心--菜单-->
+    <div class='roseInfo-essentialInformation' style="line-height: 14px;">
+        <li>
+            <div class="menu"><a href="/reception/overview">
+                <p>概览</p>
+            </a></div>
+        </li>
+        <li>
+            <div class="menu"><a href="/reception/memberCenter">
+                <p>会员中心</p>
+            </a></div>
+        </li>
+        <li>
+            <div class="menu"><a href="/reception/bastRose_info">
+                <p>基本信息</p>
+            </a></div>
+        </li>
+        <li>
+            <div class="menu"><a href="/reception/shippingAddress">
+                <p>配送地址</p>
+            </a></div>
+        </li>
+        <li>
+            <div class="menu"><a href="/reception/myOrder">
+                <p>我的订单</p>
+            </a></div>
+        </li>
+        <li>
+            <div class="menu"><a href="javascript:;">
+                <p>我的礼品卡</p>
+            </a></div>
+        </li>
+        <li>
+            <div class="menu"><a href="/reception/myLike">
+                <p>收藏夹</p>
+            </a></div>
+        </li>
+        <li>
+            <div class="menu"><a href="javascript:;">
+                <p>我的卡劵</p>
+            </a></div>
+        </li>
+    </div>
+    <!--编辑账号信息-->
+    <div class="update_info" style="background: none repeat scroll 0 0 #666666;line-height: 39px;height: 39px;">
+       <li>我的订单</li>
+    </div>
+    <div class="infoBig">
+        <div class="insert_info" id="inserInfo">
+            <table id="tbList" style="width: 100%;text-align: center;">
+                <thead>
+                <tr style="background: white">
+                    <th class="table-check">全选<input type="checkbox" id="item" name="checkAll"/></th>
+                    <th>产品信息</th>
+                    <th>数量</th>
+                    <th>收货人</th>
+                    <th>总计金额</th>
+                    <th>订单状态</th>
+                    <th class="table-set">操作</th>
+                </tr>
+                </thead>
+            </table>
+            <!--分页-->
+            <div class="abpagger" style="width: 960px;height: 60px;margin-left: 100px;">
+               <div class="pagger-box pagger" id="box"></div>
+            </div>
+        </div>
+    </div>
+    <!--底部-->
+    <div class="rose_foot">
+        <ul class="footer-ul">
+            <dl>
+                <dt>野兽VIP</dt>
+                <dd><a href="/autopage/member-policy.htm">野兽派会员中心</a></dd>
+                <dd><a href="/autopage/questions.htm">常见问题（新）</a></dd>
+                <dd><a>集团采购（建设中）</a></dd>
+            </dl>
+            <dl>
+                <dt>配送方式</dt>
+                <dd><a href="/staticpage/delivery.htm">配送时间</a></dd>
+                <dd><a href="/staticpage/delivery.htm">配送范围</a></dd>
+                <dd><a href="/staticpage/delivery.htm">配送收费标准</a></dd>
+                <dd><a href="/staticpage/delivery.htm">快递查询</a></dd>
+            </dl>
+            <dl>
+                <dt>支付方式</dt>
+                <dd><a href="/staticpage/howtopay.htm">支付宝 / 微信支付</a></dd>
+
+                <dd><a href="/staticpage/howtopay.htm">实体店支付</a></dd>
+                <dd><a href="/staticpage/howtopay.htm">优惠券使用</a></dd>
+                <dd><a href="/autopage/gift-card.htm">礼品卡支付</a></dd>
+            </dl>
+            <dl class="last">
+                <dt>售后服务</dt>
+                <dd><a href="/autopage/pc-returnpolicy.htm">退换货流程及退款</a></dd>
+                <dd><a href="/autopage/pc-orderupdate.htm">订单修改及发票</a></dd>
+                <dd><a href="/autopage/pc-servicecenter.htm">客服联系方式</a></dd>
+                <dd style="color: red"><a href="/autopage/htpc-qa.htm">跨境购说明</a></dd>
+            </dl>
+        </ul>
+        <div class="footer-right">
+            <div class="qr-code ">
+                <h5>微信商店及在线服务</h5>
+                <img src="../../../brutalism/img/weixin-code.jpg" alt="二维码"/>
+            </div>
+            <div class="qr-code ">
+                <h5>老板娘订阅号</h5>
+                <img src="../../../brutalism/img/qd-code2.jpg" alt="二维码"/>
+            </div>
+        </div>
+    </div>
+    <!--end-->
+    <div class="rosetime">任何问题，扫描微信二维码，联系在线客服。 工作时间：周一至周五9:00-21:00；周六、周日 10:00-18:00，法定节假日休息</div>
+
+
+    <!--版权底部-->
+    <div class="footer">
+        <p>关于我们 | 加入我们 | 合作联系 | 隐私权声明 | 上海布鲁爱电子商务有限公司
+        </p>
+        <p>Copyright ©野兽派2011-2018，All Rights Reserved | 沪ICP备12032741号</p>
+    </div>
+    <!--end-->
+</div>
+
+<!--javascript-->
+<script type="text/javascript" src="../../../brutalism/js/jquery.min.js"></script>
+<script src="../../../brutalism/js/paging.js"></script>
+<script type="text/javascript">
+    $("body").on("click", "#basicInfo", function () {
+        $("#inserInfo").show();
+        $("#newPwd").hide();
+    });
+    $("body").on("click", "#updatePwd", function () {
+        $("#inserInfo").hide();
+        $("#newPwd").show();
+    });
+
+    /*分页demo*/
+    function showProductPage() {
+        var pageSize = 7;
+        $('#box').paging({
+            initPageNo: 1, // 初始页码
+            totalPages: 10, //总页数
+            slideSpeed: 600, // 缓动速度。单位毫秒
+            jump: true, //是否支持跳转
+            callback: function (page) { // 回调函数
+                $.ajax({
+                    url: "/product/productLimit",
+                    data: {
+                        pageNo: page,
+                        pageSize: pageSize,
+                        productName: $("#formData").val(),
+                        oldPrice: $("#formData").val(),
+                        productDesc: $("#formData").val(),
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        $("#tbList tr:gt(0)").remove();
+                        $.each(data.data, function (i, obj) {
+                            /*判断是否新品*/
+                            if (obj.isNewProduct == 1) {
+                                obj.isNewProduct = "是";
+                            } else {
+                                obj.isNewProduct = "否";
+                            }
+                            /*判断是否热门*/
+                            if (obj.isHotProduct == 1) {
+                                obj.isHotProduct = "是";
+                            } else {
+                                obj.isHotProduct = "否";
+                            }
+                            /*判断简介文本长度大于14后加上......*/
+                            if (obj.productDesc.length > 14) {
+                                obj.productDesc = obj.productDesc.substring(0, 14) + "......"
+                            }
+
+                            var tr = "<tr>";
+                            tr += "<td><input type='checkbox' name='check' value='" + obj.productId + "'></td>"
+                            tr += "<td>" + obj.productId + "</td>";
+                            tr += "<td>" + obj.catId + "</td>";
+                            tr += "<td>" + obj.productName + "</td>";
+                            tr += "<td>" + obj.oldPrice +"</td>";
+                            tr += "<td data-img='" + obj.productPhoto + "'>" + " <img src='../../files/" + obj.productPhoto + "' width='50px'; height='50px';/>" + "</td>";
+                            tr += "<td>" + obj.productDesc + "</td>";
+                            tr += "<td>" + obj.productCount + "</td>";
+                            tr += "<td>" + obj.shopId + "</td>";
+                            tr += "<td>" + obj.productColor + "</td>";
+                            tr += "<td>" + obj.isNewProduct + "</td>";
+                            tr += "<td>" + obj.isHotProduct + "</td>";
+                            tr += "<td><button type='button' class='am-btn am-btn-default am-btn-xs am-text-secondary' id='editProduct'><span class='am-icon-pencil-square-o'></span> 编辑</button>&nbsp;<button type='button' onclick='delByIds()' class='am-btn am-btn-default am-btn-xs am-text-danger'><span class='am-icon-trash-o'></span> 删除</button>";
+                            tr += "</tr>";
+                            $("#tbList").append(tr);
+                        })
+                        $("#dataSize").html(data.data.length);
+                    }
+                })
+            }
+        })
+    }
+    showProductPage();
+</script>
+</body>
+</html>

@@ -1,0 +1,422 @@
+/*默认样式*/
+html,
+body,
+div,
+span,
+ul,
+li,
+table,
+tr,
+td,
+textarea,
+thead,
+tbody,
+button,
+input,
+select,
+iframe,
+a,
+form,
+ol,
+fieldset,
+img,
+h1,
+h2,
+h3,
+h1,
+h5,
+h6,
+legend,
+label,
+nav {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    font: 13px/1.5 "PingFang SC", "Microsoft YaHei", tahoma, arial, "\5b8b\4f53", sans-serif;
+
+}
+
+.roseMain {
+    width: 100%;
+    height: 2200px;
+    /*background: aliceblue;*/
+}
+
+.roseTitle {
+    width: 960px;
+    height: 55px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 3px solid black;
+}
+
+.roseLogin {
+    width: 30%;
+    height: 100%;
+    padding-top: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    text-align: center;
+}
+
+.roseLogo {
+    width: 30%;
+    height: 100%;
+    display: flex; /*设置为flex布局*/
+    justify-content: center; /*水平居中*/
+    align-items: center; /*垂直居中*/
+}
+
+.roseSearch {
+    width: 30%;
+    height: 100%;
+    padding-top: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.roseLogo_box {
+    width: 237px;
+    height: 32px;
+    background: url('../../../brutalism/img/logo.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.roseSearchForm {
+    width: 240px;
+    height: 35px;
+    position: relative;
+    border: 1px solid gainsboro;
+}
+
+.search_post {
+    width: 72px;
+    height: 18px;
+    background: url('../../../brutalism/img/search_post.png');
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    outline-style: none;
+    border: none;
+}
+
+.searchInput {
+    width: 150px;
+    height: 30px;
+    outline-style: none;
+    border: none;
+    position: absolute;
+    left: 85px;
+
+    top: 2px;
+}
+
+.shopping_car {
+    left: 250px;
+    position: absolute;
+}
+
+.roseMenu_container {
+    width: 960px;
+    height: 40px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+}
+
+.roseMenu_container li {
+    text-align: center;
+}
+
+.roseMenu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    list-style: none;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.roseMain_Pic {
+    width: 960px;
+    height: 474px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.index1_boxLeft {
+    width: 74%;
+    height: 100%;
+    float: left;
+    background: url('../../../brutalism//img/indexPeople.jpg');
+}
+
+.index1_boxLeft_box {
+    width: 710px;
+    height: 474px;
+    background: rgb(46, 46, 46);
+    position: absolute;
+    display: none;
+    color: white;
+    font-size: 28px;
+    text-align: center;
+    line-height: 474px;
+}
+
+.index1_boxRight_box {
+    width: 230px;
+    height: 474px;
+    background: rgb(46, 46, 46);
+    position: absolute;
+    display: none;
+    color: white;
+    font-size: 28px;
+    text-align: center;
+    line-height: 474px;
+}
+
+.index1_boxRight {
+    width: 24%;
+    height: 100%;
+    float: right;
+    background: url('../../../brutalism/img/index2.jpg');
+}
+
+.roseHideMenu_A1, .roseHideMenu_A2 {
+    width: 960px;
+    height: 280px;
+    background: white;
+    position: absolute;
+    margin: 0 auto;
+    top: 99px;
+    display: none;
+}
+
+.hideUl {
+    width: 100%;
+    height: 100%;
+    border-right: 1px solid black;
+}
+
+.hideBoxLeft {
+    float: left;
+    width: 20%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.hideBoxMiddle {
+    float: left;
+    width: 40%;
+    height: 100%;
+    display: flex; /*设置为flex布局*/
+    justify-content: center; /*水平居中*/
+    align-items: center; /*垂直居中*/
+}
+
+.hideTextLogo {
+    top: 240px;
+    position: absolute;
+}
+
+.hideText {
+    top: 255px;
+    position: absolute;
+}
+
+.hideBoxRight {
+    float: left;
+    width: 40%;
+    height: 100%;
+    display: flex; /*设置为flex布局*/
+    justify-content: center; /*水平居中*/
+    align-items: center; /*垂直居中*/
+}
+
+.index2_boxLeft {
+    width: 49%;
+    height: 100%;
+    float: left;
+}
+
+.index2_boxRight {
+    width: 49%;
+    height: 100%;
+    float: right;
+    background: url('../../../brutalism/img/indexPeople2.jpg');
+}
+
+.index3_left {
+    width: 63%;
+    height: 100%;
+    float: left;
+    background: url('../../../brutalism/img/index32.jpg');
+}
+
+.index3_right {
+    width: 35%;
+    height: 100%;
+    float: right;
+    background: url('../../../brutalism/img/index31.jpg') no-repeat;
+}
+
+.index2_boxLeft_top {
+    width: 100%;
+    height: 48%;
+}
+
+.tr {
+    width: 100%;
+    height: 4%;
+}
+
+.index2_boxLeft_bottom {
+    width: 100%;
+    height: 48%;
+    background: url('../../../brutalism/img/index8.jpg');
+}
+
+.index2_box_left_top_left {
+    width: 48%;
+    height: 100%;
+    float: left;
+    background: url('../../../brutalism/img/index3.jpg');
+}
+
+.index2_box_left_top_right {
+    width: 48%;
+    height: 100%;
+    float: right;
+    background: url('../../../brutalism/img/index4.jpg')
+}
+
+.roseStore {
+    width: 960px;
+    height: 30px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    text-align: center;
+}
+
+.roseMain_store {
+    width: 960px;
+    height: 289px;
+    margin-top: 10px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.index4Box {
+    width: 30%;
+    height: 100%;
+    background: seagreen;
+}
+
+.indexbox41 {
+    background: url('../../../brutalism/img/f1.jpg')
+}
+
+.indexbox42 {
+    background: url('../../../brutalism/img/f2.jpg');
+}
+
+.indexbox43 {
+    background: url('../../../brutalism/img/f3.png');
+}
+
+.rose_foot {
+    width: 960px;
+    height: 160px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    border-top: 1px solid black;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.rosetime {
+    width: 960px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 auto;
+    background: #f1f1f1;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.footer-ul {
+    width: 70%;
+    height: 100%;
+    float: left;
+}
+
+.footer-ul a {
+    text-decoration: none;
+    color: black;
+}
+
+dl {
+    float: left;
+    padding: 0;
+    margin: 0;
+    width: 150px;
+}
+
+dt {
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+dd {
+    padding: 0;
+    margin: 0;
+    line-height: 21px;
+    font-size: 13px;
+}
+
+.footer-right {
+    float: right;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.qr-code {
+    float: left;
+    text-align: center;
+}
+
+.footer {
+    width: 960px;
+    height: 60px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-size: 12px;;
+    text-align: center;
+}			

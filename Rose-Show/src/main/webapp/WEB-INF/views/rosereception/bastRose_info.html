@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>基本信息</title>
+    <link rel="stylesheet" href="../../../brutalism/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="shortcut icon" href="../../../brutalism/brutalismFrontImg/globalImg/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../brutalism/css/info.css"/>
+</head>
+
+<body>
+<div class="roseMain">
+    <!--头部-->
+    <div class="roseTitle">
+        <div class="roseLogin">欢迎来到 THE BEAST 野兽派！<a href="/reception/brutalism_login">登录</a> <a
+                href="/reception/brutalism_register">注册</a></div>
+        <div class="roseLogo">
+            <a href="/reception/index"><div class="roseLogo_box"></div></a>
+        </div>
+        <div class="roseSearch">
+            <div class="roseSearchForm">
+                <input type="button" class="search_post">
+                <input type="text" placeholder="新品推荐" class="searchInput"/>
+                <a href="/reception/shopcart"><i class="fa fa-cart-arrow-down fa-2x shopping_car"
+                                                 aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--个人中心--菜单-->
+    <div class='roseInfo-essentialInformation' style="line-height: 14px;">
+        <li>
+            <div class="menu"><a href="/reception/overview">
+                <p>概览</p>
+            </a></div>
+        </li>
+        <li>
+            <div class="menu"><a href="/reception/memberCenter">
+                <p>会员中心</p>
+            </a></div>
+        </li>
+        <li>
+            <div class="menu"><a href="/reception/bastRose_info">
+                <p>基本信息</p>
+            </a></div>
+        </li>
+        <li>
+            <div class="menu"><a href="/reception/shippingAddress">
+                <p>配送地址</p>
+            </a></div>
+        </li>
+        <li>
+            <div class="menu"><a href="/reception/myOrder">
+                <p>我的订单</p>
+            </a></div>
+        </li>
+        <li>
+            <div class="menu"><a href="javascript:;">
+                <p>我的礼品卡</p>
+            </a></div>
+        </li>
+        <li>
+            <div class="menu"><a href="/reception/myLike">
+                <p>收藏夹</p>
+            </a></div>
+        </li>
+        <li>
+            <div class="menu"><a href="javascript:;">
+                <p>我的卡劵</p>
+            </a></div>
+        </li>
+    </div>
+    <!--编辑账号信息-->
+    <div class="update_info" style="background: none repeat scroll 0 0 #666666;line-height: 39px;height: 39px;">
+        <li>
+            <div class="info">
+                <a id="basicInfo" style="color: white;">基本信息</a>
+            </div>
+        </li>
+        <li>
+            <a id="updatePwd" style="color: white;">
+                修改密码
+            </a>
+        </li>
+    </div>
+    <div class="infoBig">
+
+        <div class="insert_info" id="inserInfo">
+            <label>手机号</label>
+            <input type="text" style="width: 188px;"/>
+            <br>
+            <label>密码</label>
+            <input type="password" style="width: 188px;"/><span>*</span>
+            <br>
+            <label>姓名</label>
+            <input type="text" style="width: 188px;"/><span>*</span>
+            <br>
+            <label>性别</label>
+            <input type="radio" value="男"/>男
+            <input type="radio" value="女"/>女
+            <span>*</span>
+            <br>
+            <label>出生日期</label>
+            <input type="date" style="width: 188px;"/><span>*</span>
+            <br>
+            <label>类型</label>
+            <select style="height: 33.98px;width: 201px;margin-top: 15px;text-align: center;text-align-last: center;">
+                <option>请选择</option>
+                <option value="0">普通</option>
+                <option value="1">会员</option>
+            </select>
+            <br>
+            <p><input type="button" style="background: #000;" value="提交"/></p>
+        </div>
+
+        <div id="newPwd">
+            <span>*</span><label>旧密码</label>
+            <input type="password"><br>
+            <span>*</span><label>新密码</label>
+            <input type="password"/><br>
+            <span>*</span><label>确认新密码</label>
+            <input type="password"/>
+            <p><input type="button" value="修改"></p>
+        </div>
+
+    </div>
+    <!--底部-->
+    <div class="rose_foot">
+        <ul class="footer-ul">
+            <dl>
+                <dt>野兽VIP</dt>
+                <dd><a href="/autopage/member-policy.htm">野兽派会员中心</a></dd>
+                <dd><a href="/autopage/questions.htm">常见问题（新）</a></dd>
+                <dd><a>集团采购（建设中）</a></dd>
+            </dl>
+            <dl>
+                <dt>配送方式</dt>
+                <dd><a href="/staticpage/delivery.htm">配送时间</a></dd>
+                <dd><a href="/staticpage/delivery.htm">配送范围</a></dd>
+                <dd><a href="/staticpage/delivery.htm">配送收费标准</a></dd>
+                <dd><a href="/staticpage/delivery.htm">快递查询</a></dd>
+            </dl>
+            <dl>
+                <dt>支付方式</dt>
+                <dd><a href="/staticpage/howtopay.htm">支付宝 / 微信支付</a></dd>
+
+                <dd><a href="/staticpage/howtopay.htm">实体店支付</a></dd>
+                <dd><a href="/staticpage/howtopay.htm">优惠券使用</a></dd>
+                <dd><a href="/autopage/gift-card.htm">礼品卡支付</a></dd>
+            </dl>
+            <dl class="last">
+                <dt>售后服务</dt>
+                <dd><a href="/autopage/pc-returnpolicy.htm">退换货流程及退款</a></dd>
+                <dd><a href="/autopage/pc-orderupdate.htm">订单修改及发票</a></dd>
+                <dd><a href="/autopage/pc-servicecenter.htm">客服联系方式</a></dd>
+                <dd style="color: red"><a href="/autopage/htpc-qa.htm">跨境购说明</a></dd>
+            </dl>
+        </ul>
+        <div class="footer-right">
+            <div class="qr-code ">
+                <h5>微信商店及在线服务</h5>
+                <img src="../../../brutalism/img/weixin-code.jpg" alt="二维码"/>
+            </div>
+            <div class="qr-code ">
+                <h5>老板娘订阅号</h5>
+                <img src="../../../brutalism/img/qd-code2.jpg" alt="二维码"/>
+            </div>
+        </div>
+    </div>
+    <!--end-->
+    <div class="rosetime">任何问题，扫描微信二维码，联系在线客服。 工作时间：周一至周五9:00-21:00；周六、周日 10:00-18:00，法定节假日休息</div>
+
+
+    <!--版权底部-->
+    <div class="footer">
+        <p>关于我们 | 加入我们 | 合作联系 | 隐私权声明 | 上海布鲁爱电子商务有限公司
+        </p>
+        <p>Copyright ©野兽派2011-2018，All Rights Reserved | 沪ICP备12032741号</p>
+    </div>
+    <!--end-->
+</div>
+
+<!--javascript-->
+<script type="text/javascript" src="../../../brutalism/js/jquery.min.js"></script>
+<script type="text/javascript">
+    $("body").on("click", "#basicInfo", function () {
+        $("#inserInfo").show();
+        $("#newPwd").hide();
+    });
+    $("body").on("click", "#updatePwd", function () {
+        $("#inserInfo").hide();
+        $("#newPwd").show();
+    });
+</script>
+</body>
+</html>
