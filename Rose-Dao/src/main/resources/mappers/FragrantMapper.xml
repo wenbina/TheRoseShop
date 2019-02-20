@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf.theroseshop.dao.FragrantDao">
+    <!--香薰模糊查询和分页-->
+    <select id="getAll" resultType="Fragrant">
+        SELECT
+        fragrant.Fragrant_id,
+        fragrant.Fragrant_code,
+        fragrant.Fragrant_name,
+        fragrant.Fragrant_content,
+        fragrant.Fragrant_price,
+        fragrant.Fragrant_reason,
+        fragrant.Fragrant_composition,
+        fragrant.Fragrant_story,
+        fragrant.Fragrant_explain,
+        fragrant.Fragrant_Stock,
+        fragrant.Fragrant_sale,
+        fragranttype.FragrantType_id,
+        supplierinfo.Supplier_id
+        FROM
+        fragrant
+        INNER JOIN fragranttype ON fragrant.Fragrant_type = fragranttype.FragrantType_id
+        INNER JOIN supplierinfo ON fragrant.Fragrant_supplier = supplierinfo.Supplier_id
+        <where>
+            <if test="Fragrant_name!=null and Fragrant_name!=''">
+                or Fragrant_name like concat(concat('%',#{Fragrant_name}),'%')
+            </if>
+            <if test="Fragrant_price!=null and Fragrant_price!=''">
+                or Fragrant_price like concat(concat('%',#{Fragrant_price}),'%')
+            </if>
+        </where>
+        order by fragrant.Fragrant_id asc
+        limit #{page},#{limit}
+    </select>
+
+    <!--添加香薰-->
+    <insert id="insert" parameterType="Fragrant">
+      insert into fragrant(Fragrant_code,Fragrant_name,Fragrant_content,Fragrant_price,Fragrant_reason,Fragrant_composition,Fragrant_story,Fragrant_explain,Fragrant_Stock,Fragrant_sale,Fragrant_supplier,Fragrant_type)
+      values (#{Fragrant_code},#{Fragrant_name},#{Fragrant_content},#{Fragrant_price},#{Fragrant_reason},#{Fragrant_composition},#{Fragrant_story},#{Fragrant_explain},#{Fragrant_Stock},#{Fragrant_sale},#{Fragrant_supplier},#{Fragrant_type})
+    </insert>
+
+    <!--修改香薰-->
+    <update id="updata" parameterType="Fragrant">
+      update fragrant
+      <set>
+          <if test="Fragrant_code!=null and Fragrant_code!=''">
+              Fragrant_code=#{Fragrant_code},
+          </if>
+          <if test="Fragrant_name!=null and Fragrant_name!=''">
+              Fragrant_name=#{Fragrant_name},
+          </if>
+          <if test="Fragrant_content!=null and Fragrant_content!=''">
+              Fragrant_content=#{Fragrant_content},
+          </if>
+          <if test="Fragrant_price!=null and Fragrant_price!=''">
+              Fragrant_price=#{Fragrant_price},
+          </if>
+          <if test="Fragrant_reason!=null and Fragrant_reason!=''">
+              Fragrant_reason=#{Fragrant_reason},
+          </if>
+          <if test="Fragrant_composition!=null and Fragrant_composition!=''">
+              Fragrant_composition=#{Fragrant_composition},
+          </if>
+          <if test="Fragrant_story!=null and Fragrant_story!=''">
+              Fragrant_story=#{Fragrant_story},
+          </if>
+          <if test="Fragrant_explain!=null and Fragrant_explain!=''">
+              Fragrant_explain=#{Fragrant_explain},
+          </if>
+          <if test="Fragrant_Stock!=null and Fragrant_Stock!=''">
+              Fragrant_Stock=#{Fragrant_Stock},
+          </if>
+          <if test="Fragrant_sale!=null and Fragrant_sale!=''">
+              Fragrant_sale=#{Fragrant_sale},
+          </if>
+          <if test="Fragrant_supplier!=null and Fragrant_supplier!=''">
+              Fragrant_supplier=#{Fragrant_supplier},
+          </if>
+          <if test="Fragrant_type!=null and Fragrant_type!=''">
+              Fragrant_type=#{Fragrant_type}
+          </if>
+      </set>
+      where Fragrant_id=#{Fragrant_id}
+    </update>
+
+    <!--单删除香薰-->
+    <delete id="deleteid">
+      delete from fragrant where Fragrant_id=#{Fragrant_id}
+    </delete>
+
+    <!--多删除香薰-->
+    <delete id="deleteids"  parameterType="int">
+       delete from fragrant
+       where Fragrant_id in
+       <foreach collection="Fragrant_id" open="(" item="Fragrant_id" separator="," close=")">
+          #{Fragrant_id}
+       </foreach>
+    </delete>
+</mapper>
