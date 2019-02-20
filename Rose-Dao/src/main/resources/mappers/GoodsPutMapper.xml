@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf.theroseshop.dao.GoodsPutDao">
+    <!--select GoodsPut-->
+    <select id="selectGoodsPut" resultType="Goodsput" resultMap="getGoodsPut" parameterType="java.util.Map">
+        select* from goodsput as p join supplierinfo as i on p.GoodsPut_supplier_code=i.Supplier_id join employee as e on p.GoodsPut_goods_operator=e.employee_id
+        <where>
+            <if test="GoodsPut_id!=null and GoodsPut_id gt 0">
+                and p.GoodsPut_id = #{id}
+            </if>
+            <if test="GoodsPut_supplier_code!=null and GoodsPut_supplier_code!=''">
+                and p.GoodsPut_supplier_code = #{code}
+            </if>
+            <if test="GoodsPut_goods_date!=null and GoodsPut_goods_date!=''">
+                and p.GoodsPut_goods_date = #{date}
+            </if>
+            <if test="GoodsPut_goods_operator!=null and GoodsPut_goods_operator!=''">
+                and p.GoodsPut_goods_operator = #{operator}
+            </if>
+        </where>
+        order by p.GoodsPut_id limit #{page},#{limit}
+    </select>
+    <select id="selectGoodsPutCount" resultType="int">
+        select count(*) from goodsput
+        inner join supplierinfo on goodsput.GoodsPut_supplier_code = supplierinfo.Supplier_id
+        inner join employee on goodsput.GoodsPut_goods_operator = employee.employee_id
+        <where>
+            <if test="GoodsPut_id!=null and GoodsPut_id!=''">
+                and goodsput.GoodsPut_id = #{GoodsPut_id}
+            </if>
+            <if test="GoodsPut_supplier_code!=null and GoodsPut_supplier_code!=''">
+                and goodsput.GoodsPut_supplier_code = #{GoodsPut_supplier_code}
+            </if>
+            <if test="GoodsPut_goods_date!=null and GoodsPut_goods_date!=''">
+                and goodsput.GoodsPut_goods_date = #{GoodsPut_goods_date}
+            </if>
+            <if test="GoodsPut_goods_operator!=null and GoodsPut_goods_operator!=''">
+                and goodsput.GoodsPut_goods_operator = #{GoodsPut_goods_operator}
+            </if>
+        </where>
+        limit #{page},#{limit}
+    </select>
+    <resultMap id="getGoodsPut" type="GoodsPut">
+        <id column="GoodsPut_id" property="goodsPutId"/>
+        <result column="GoodsPut_supplier_code" property="goodsPutSupplierCode"/>
+        <result column="GoodsPut_goods_date" property="goodsPutGoodsDate"/>
+        <result column="GoodsPut_goods_operator" property="goodsPutGoodsOperator"/>
+        <association property="supplierinfo" javaType="Supplierinfo">
+            <id column="Supplier_id" property="supplierId"/>
+            <result column="Supplier_name" property="supplierName"/>
+            <result column="Supplier_adress" property="supplierAdress"/>
+            <result column="Supplier_person" property="supplierPerson"/>
+            <result column="Supplier_phone" property="supplierPhone"/>
+            <result column="Supplier_account" property="supplierAccount"/>
+        </association>
+        <association property="employee" javaType="Employee">
+            <id column="employee_id" property="employeeId"/>
+            <result column="employee_name" property="employeeName"/>
+            <result column="employee_tx" property="employeeTx"/>
+            <result column="employee_code" property="employeeCode"/>
+            <result column="employee_date" property="employeeDate"/>
+            <result column="employee_number" property="employeeNumber"/>
+            <result column="employee_worktype" property="employeeWorktype"/>
+        </association>
+    </resultMap>
+    <!--select GoodsPutData-->
+    <select id="selectGoodsPutData" resultType="Goodsputdata" resultMap="getGoodsputdata"  parameterType="java.util.Map">
+        select * from goodsputdata as d join goodsput as p on d.GoodsPutData_goods_ofCode=p.GoodsPut_id
+        <where>
+            <!--<if test="GoodsPutData_id!=null and GoodsPutData_id!=''">-->
+                <!--and goodsputdata.GoodsPutData_id = #{GoodsPutData_id}-->
+            <!--</if>-->
+            <!--<if test="GoodsPutData_code!=null and GoodsPutData_code!=''">-->
+                <!--and goodsputdata.GoodsPutData_code = #{GoodsPutData_code}-->
+            <!--</if>-->
+            <!--<if test="GoodsPutData_goods_name!=null and GoodsPutData_goods_name!=''">-->
+                <!--and goodsputdata.GoodsPutData_goods_name = #{GoodsPutData_goods_name}-->
+            <!--</if>-->
+            <if test="GoodsPutData_goods_ofCode!=null and GoodsPutData_goods_ofCode!=''">
+                and d.GoodsPutData_goods_ofCode = #{GoodsPutData_goods_ofCode}
+            </if>
+        </where>
+        <!--limit #{page},#{limit}-->
+    </select>
+    <select id="selectGoodsPutDataCount" resultType="int">
+        select count(*) from goodsputdata
+        inner join goodsput on goodsputdata.GoodsPutData_goods_ofCode = goodsput.GoodsPut_id
+        <where>
+            <if test="GoodsPutData_id!=null and GoodsPutData_id!=''">
+                and goodsputdata.GoodsPutData_id = #{GoodsPutData_id}
+            </if>
+            <if test="GoodsPutData_code!=null and GoodsPutData_code!=''">
+                and goodsputdata.GoodsPutData_code = #{GoodsPutData_code}
+            </if>
+            <if test="GoodsPutData_goods_name!=null and GoodsPutData_goods_name!=''">
+                and goodsputdata.GoodsPutData_goods_name = #{GoodsPutData_goods_name}
+            </if>
+            <if test="GoodsPutData_goods_ofCode!=null and GoodsPutData_goods_ofCode!=''">
+                and goodsputdata.GoodsPutData_goods_ofCode = #{GoodsPutData_goods_ofCode}
+            </if>
+        </where>
+        limit #{page},#{limit}
+    </select>
+    <resultMap id="getGoodsputdata" type="Goodsputdata">
+        <id column="GoodsPutData_id" property="goodsPutDataId"/>
+        <result column="GoodsPutData_code" property="goodsPutDataCode"/>
+        <result column="GoodsPutData_goods_name" property="goodsPutDataGoodsName"/>
+        <result column="GoodsPutData_goods_count" property="goodsPutDataGoodsCount"/>
+        <result column="GoodsPutData_goods_price" property="goodsPutDataGoodsPrice"/>
+        <result column="GoodsPutData_goods_total" property="goodsPutDataGoodsTotal"/>
+        <result column="GoodsPutData_goods_ofCode" property="goodsPutDataGoodsOfCode"/>
+        <association property="goodsput" javaType="Goodsput">
+            <id column="goodsPut_id" property="goodsPutId"/>
+            <result column="GoodsPut_supplier_code" property="goodsPutSupplierCode"/>
+            <result column="GoodsPut_goods_date" property="goodsPutGoodsDate"/>
+            <result column="GoodsPut_goods_operator" property="goodsPutGoodsOperator"/>
+        </association>
+    </resultMap>
+    <!--insert-->
+    <insert id="insertGoodsPut" parameterType="Goodsput">
+        insert into goodsput (GoodsPut_supplier_code, GoodsPut_goods_date, GoodsPut_goods_operator) values (#{GoodsPut_supplier_code},#{GoodsPut_goods_date},#{GoodsPut_goods_operator});
+    </insert>
+    <insert id="insertGoodsPutData" parameterType="Goodsputdata">
+        insert into goodsputdata (GoodsPutData_code, GoodsPutData_goods_name, GoodsPutData_goods_count, GoodsPutData_goods_price, GoodsPutData_goods_total, GoodsPutData_goods_ofCode)values (#{GoodsPutData_code},#{GoodsPutData_goods_name},#{GoodsPutData_goods_count},#{GoodsPutData_goods_price},#{GoodsPutData_goods_total},#{GoodsPutData_goods_ofCode});
+    </insert>
+    <!--update-->
+    <update id="updateGoodsPut" parameterType="Goodsput">
+        update goodsputm set GoodsPut_supplier_code=#{GoodsPut_supplier_code},GoodsPut_goods_date=#{GoodsPut_goods_date},GoodsPut_goods_operator=#{GoodsPut_goods_operator} where GoodsPut_id=#{GoodsPut_id}
+    </update>
+    <update id="updateGoodsData" parameterType="Goodsputdata">
+        update goodsputdata set GoodsPutData_code=#{GoodsPutData_code},GoodsPutData_goods_name=#{GoodsPutData_goods_name},GoodsPutData_goods_count=#{GoodsPutData_goods_count}GoodsPutData_goods_price=#{GoodsPutData_goods_price},GoodsPutData_goods_total=#{GoodsPutData_goods_total},GoodsPutData_goods_ofCode=#{GoodsPutData_goods_ofCode} where GoodsPutData_id=#{GoodsPutData_id}
+    </update>
+    <!--delete-->
+    <delete id="deleteGoodsPut" parameterType="int">
+        delete from goodsput where GoodsPut_id=#{GoodsPut_id}
+    </delete>
+    <delete id="deleteGoodsPutAll" parameterType="int">
+        delete from goodsput where GoodsPut_id in
+        <foreach collection="list" open="(" item="GoodsPut_id" separator="," close=")">
+            #{GoodsPut_id}
+        </foreach>
+    </delete>
+    <delete id="deleteGoodsPutData" parameterType="int">
+        delete from goodsputdata where GoodsPutData_id=#{GoodsPutData_id}
+    </delete>
+    <delete id="deleteGoodsPutDataAll" parameterType="int">
+        delete from goodsputdata where GoodsPutData_id in
+        <foreach collection="list" open="(" item="GoodsPutData_id" separator="," close=")">
+            #{GoodsPutData_id}
+        </foreach>
+    </delete>
+</mapper>
