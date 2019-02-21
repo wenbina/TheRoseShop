@@ -1,0 +1,72 @@
+/*默认样式*/
+html,body,div,span,ul,li,table,tr,td,textarea,thead,tbody,button,input,select,iframe,a,form,ol,fieldset,img,h1,h2,h3,h1,h5,h6,legend,label,nav {padding: 0;margin: 0;}
+a {text-decoration: none;color: black;cursor: pointer;}
+li {list-style: none;}
+body {font: 13px/1.5 "PingFang SC", "Microsoft YaHei", tahoma, arial, "\5b8b\4f53", sans-serif;}
+img{border: 0;vertical-align: top;}
+/*头部*/
+.roseMain{width:960px;height: 100%;margin: 0 auto;}
+.roseTitle{width:960px;height: 55px;margin: 0 auto;display: flex;justify-content:space-around;border-bottom: 3px solid black;			}
+.roseLogin{width:30%;height: 100%;padding-top:15px;box-sizing: border-box;font-size: 14px;text-align: center;}
+.roseLogo{width:30%;height: 100%;display: flex;justify-content: center;align-items: center;}
+.roseSearch{width:30%;height: 100%;padding-top:15px;box-sizing: border-box;font-size: 14px;}
+.roseLogo_box{width: 237px;height: 32px;background: url(../img/logo.png) no-repeat;}
+.roseSearchForm{width:240px;height: 35px;position: relative;border: 1px solid gainsboro;}
+.search_post{width:72px;height: 18px;background: url(../img/search_post.png);position: absolute;top:6px;left:10px;outline-style: none;border: none;}
+.searchInput{width:150px;height: 30px;outline-style: none;border: none;position: absolute;left: 85px;top:2px;}
+.shopping_car{left:250px;position: absolute;}
+.roseMenu_container{width:960px;height: 40px;margin: 0 auto;display: flex;justify-content:space-around;border-bottom: 1px solid black;}
+.roseMenu{width:100%;height: 100%;display: flex;justify-content:space-around;border-bottom: 1px solid black;list-style: none;box-sizing: border-box;margin-bottom: 10px;padding:5px;font-size: 14px;}
+
+.rose-tips{width: 960px;margin: 0 auto 4px auto;text-align: center;background-color: #e7e7e7;padding: 0;line-height: 26px;font-size: 13px;}
+/*car shop list*/
+.rose-car-main{width: 960px;margin: 0px auto;}
+.rose-car-title{width: 100%;overflow: hidden;}
+.rose-car-title h1{height: 40px;text-indent: 20px;line-height: 40px;background: #000;color: #fff;font-size: 14px;font-weight: bold;}
+.rose-car-list{padding-bottom: 20px;overflow: hidden;}
+.rose-car-shop .list{width: 100%;color: #333;font-size: 13px;line-height: 17px;height: 100%;border-collapse: collapse;}
+.rose-car-shop .list tr{border-top: 1px solid #E1E1E1;}
+.rose-car-shop .list .list-useless{height: 1px;background: #E1E1E1;}
+.rose-car-shop .list .list-first{border-top: 0 !important;}
+.rose-car-shop .list .list-first th{padding: 20px 0 20px 20px;}
+.rose-car-shop .list input{margin-top: -4px;width: 14px;height: 14px;}
+.rose-car-shop .list td input{position: absolute;top: 73px;}
+.rose-car-shop .list .list-msg{color: #fff;background: #537371;padding: 3px 5px;font-size: 12px;margin-left: 12px;}
+.rose-car-shop .list td{padding: 20px 0 20px 20px;position: relative;}
+.rose-car-shop .list td p{margin: 5px 0;}
+.rose-car-shop .list td img{width: 110px;height: 115px;}
+.rose-car-shop .list td .list-num{width: 100px;margin: 0 auto;margin-top: -7px;}
+.rose-car-shop .list td .list-num span{height: 27px;width: 27px;display: inline-block;text-align: center;border: 1px solid #E1E1E1;line-height: 27px;cursor: pointer;padding: 0;}
+.rose-car-shop .list td .list-num span:first-child:hover{border: 1px solid black;}
+.rose-car-shop .list td .list-num span:last-child:hover{border: 1px solid black;}
+.rose-car-shop .list td .list-num span.num-show{width: 40px;border-left: 0;border-right: 0;margin-left: -4px;margin-right: -4px;}
+
+/*car recommend*/
+.rose-car-recommend{padding: 20px 0;border-top: 1px solid #E1E1E1;margin-bottom: 40px;}
+.rose-car-recommend .recommend-title{font-size: 16px;margin-bottom: 20px;}
+.rose-car-recommend .recommend-list{padding: 20px 30px 0;border-top: 1px solid #E1E1E1;position: relative;display: block;box-sizing: border-box;}
+.rose-car-recommend .recommend-list .recommend-prev{position: absolute;top: 106px;left: 0;cursor: pointer;}
+.rose-car-recommend .recommend-list .recommend-next{position: absolute;top: 106px;right: 0;cursor: pointer;}
+.rose-car-recommend .recommend-list .recommend-list-shop{position: relative;display: block;overflow: hidden;margin: 0;padding: 0;}
+.recommend-list-shop .recommend-list-item{padding: 0 10px;display: block;float: left;height: 100%;min-height: 1px;}
+.recommend-list-shop .recommend-list-item img {width: 100%;}
+.recommend-list-shop .recommend-list-item p{margin: 0;font-size: 13px;line-height: 18px;color: #565656;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.recommend-list-shop .recommend-list-item .p-first{font-size: 14px;line-height: 20px;color: #9A9A9A;margin-top: 13px;}
+.recommend-list-shop .recommend-list-item .shop-name{font-size: 14px;line-height: 20px;}
+.recommend-list-shop .recommend-list-item .shop-price{color: #2B2B2B;}
+
+/*car total*/
+.rose-car-total{width: 960px;padding: 10px 0;border-top: 1px solid #E1E1E1;position: fixed;bottom: 0;background: #fff;padding-bottom: 20px;}
+.rose-car-total .total-left{float: left;padding: 10px 0 10px 20px;}
+.rose-car-total .total-left a:hover{color: lightskyblue;}
+.rose-car-total .total-right{float: right;}
+.rose-car-total .total-right span{margin-right: 10px;color: #838383;}
+.rose-car-total .total-right span em{color: #000;font-size: 14px;font-weight: bold;font-family: Georgia;}
+.rose-car-total .total-right button{background: #000;font-size: 14px;color: #fff;text-align: center;display: inline-block;border: none;padding: 10px 30px;cursor: pointer;}
+
+/*car null*/
+.rose-car-null{margin: 100px 0;text-align: center;}
+.rose-car-null img{width: 120px;height: 158px;display: block;margin: 0 auto;}
+.rose-car-null a{font-size: 16px;margin-top: 10px;color: #9A9A9A;}
+
+

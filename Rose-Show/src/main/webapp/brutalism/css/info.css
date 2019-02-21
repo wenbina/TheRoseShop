@@ -1,0 +1,289 @@
+/*默认样式*/
+
+html,
+body,
+div,
+span,
+ul,
+li,
+table,
+tr,
+td,
+textarea,
+thead,
+tbody,
+button,
+input,
+select,
+iframe,
+a,
+form,
+ol,
+fieldset,
+img,
+h1,
+h2,
+h3,
+h1,
+h5,
+h6,
+legend,
+label,
+nav {
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+li {
+	list-style: none;
+}
+
+body {
+	font: 13px/1.5 "PingFang SC", "Microsoft YaHei", tahoma, arial, "\5b8b\4f53", sans-serif;
+}
+
+.roseMain {
+	width: 100%;
+	height: auto;
+}
+
+.roseTitle {
+	width: 960px;
+	height: 55px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-around;
+	border-bottom: 3px solid black;
+}
+
+.roseLogin {
+	width: 30%;
+	height: 100%;
+	padding-top: 15px;
+	box-sizing: border-box;
+	font-size: 14px;
+	text-align: center;
+}
+
+.roseLogo {
+	width: 30%;
+	height: 100%;
+	display: flex;
+	/*设置为flex布局*/
+	justify-content: center;
+	/*水平居中*/
+	align-items: center;
+	/*垂直居中*/
+}
+
+.roseSearch {
+	width: 30%;
+	height: 100%;
+	padding-top: 15px;
+	box-sizing: border-box;
+	font-size: 14px;
+}
+
+.roseLogo_box {
+	width: 237px;
+	height: 32px;
+	background: url(../img/logo.png) no-repeat;
+}
+
+.roseSearchForm {
+	width: 240px;
+	height: 35px;
+	position: relative;
+	border: 1px solid gainsboro;
+}
+
+.search_post {
+	width: 72px;
+	height: 18px;
+	background: url(../img/search_post.png);
+	position: absolute;
+	top: 6px;
+	left: 10px;
+	outline-style: none;
+	border: none;
+}
+
+.searchInput {
+	width: 150px;
+	height: 30px;
+	outline-style: none;
+	border: none;
+	position: absolute;
+	left: 85px;
+	top: 2px;
+}
+
+.shopping_car {
+	left: 250px;
+	position: absolute;
+}
+
+.roseInfo-essentialInformation {
+	width: 960px;
+	height: 40px;
+	border: 0px solid black;
+	display: flex;
+	margin: 0 auto;
+	justify-content: space-around;
+	border-bottom: 1px solid black;
+}
+
+.update_info {
+	width: 960px;
+	height: 40px;
+	margin: 0 auto;
+	margin-top: 1%;
+}
+
+.update_info li {
+	float: left;
+	color: white;
+	font-size: 18px;
+	margin-left: 10px;
+}
+
+.insert_info {
+	width: 960px;
+	height: auto;
+	margin: auto;
+}
+
+.insert_info label,
+#newPwd label {
+	margin-left: 30%;
+	margin-top: 1%;
+	display: inline-block;
+	width: 6%;
+	text-align: right;
+}
+
+#newPwd label {
+	margin-left: 0px;
+}
+
+.insert_info input,
+#newPwd input {
+	margin-left: 2%;
+	margin-top: 2%;
+	padding: 0.6% 0.5%;
+	text-indent: 8px
+}
+
+#newPwd input {
+	color: orangered;
+}
+
+.insert_info select {
+	padding: 0.3% 6%;
+	margin-left: 2%;
+}
+
+.insert_info span,
+#newPwd span {
+	color: orangered;
+	margin-left: 0.5%;
+}
+
+#newPwd span {
+	margin-left: 30%;
+}
+
+.insert_info p input,
+#newPwd p input {
+	margin-left: 40%;
+	padding: 7px 50px;
+	background-color: #83847E;
+	color: white;
+	border: 0;
+}
+
+#newPwd {
+	display: none;
+	overflow: hidden;
+}
+
+.rose_foot {
+	width: 960px;
+	height: 160px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+	border-top: 1px solid black;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.rosetime {
+	width: 960px;
+	height: 30px;
+	line-height: 30px;
+	margin: 0 auto;
+	background: #f1f1f1;
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+
+.footer-ul {
+	width: 70%;
+	height: 100%;
+	float: left;
+}
+
+.footer-ul a {
+	text-decoration: none;
+	color: black;
+}
+
+dl {
+	float: left;
+	padding: 0;
+	margin: 0;
+	width: 150px;
+}
+
+dt {
+	padding-bottom: 10px;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+dd {
+	padding: 0;
+	margin: 0;
+	line-height: 21px;
+	font-size: 13px;
+}
+
+.footer-right {
+	float: right;
+	width: 30%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.qr-code {
+	float: left;
+	text-align: center;
+}
+
+.footer {
+	width: 960px;
+	height: 60px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	font-size: 12px;
+	;
+	text-align: center;
+}

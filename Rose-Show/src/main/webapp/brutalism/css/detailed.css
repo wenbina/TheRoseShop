@@ -1,0 +1,342 @@
+/*内容的div*/
+.product_show{
+	overflow: hidden;
+	/*position: absolute;*/
+	width: 960px;
+	margin: 0 auto;
+	margin-top: 5px;
+	/*margin-bottom: 50px;*/
+}
+/*左边*/
+.product_left{
+	position: relative;
+	float: left;
+	display: inline-block;
+	width: 670px;
+}
+/*右边详细介绍*/
+.product_right{
+	position: relative;
+	float: right;
+	display: inline-block;
+	width: 255px;
+	/*height: 50px;*/
+	/*background: blue;*/
+	margin-left: 20px;
+}
+.brand{
+	font-size: 25px;
+    font-weight: bold;
+    line-height: 35px;
+    font-style: italic;
+    margin: 0 0 15px 0px;
+    font-family: Georgia, serif;
+}
+.brand_a{
+	ist-style: none;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+.product_left img{
+	border: 0;
+	vertical-align: top;
+}
+.product_name, .product_name_en{
+	font-size: 14px;
+    color: #999;
+    font-weight: normal;
+    line-height: 20px;
+}
+.product_price{
+	color: #004C46;
+    font-size: 20px;
+    height: 30px;
+   /*background: red;*/
+    /*margin-bottom: 5px;*/
+    /*zoom:1;*/
+    /*border-bottom: 1px solid #E1E1E1;*/ 
+}
+.product_price span{
+	display: block;
+    line-height: 23px;
+    float: left;
+}
+.open{
+	padding: 10px 0;
+    border-top: 1px solid #E1E1E1;
+    border-bottom: 1px solid #E1E1E1;
+    margin-bottom: 5px;
+}
+.labels{
+	position: relative;
+	overflow: hidden;
+}
+.labels_detail_tips{
+	margin-bottom: 5px;
+	margin-top: 0 !important;
+}
+.labels_detail_tips_div{
+	background: #537371;
+    height: 17px;
+    font-size: 12px;
+    float: left;
+    margin: 0 6px 0 0;
+    line-height: 17px;
+    padding: 0 4px;
+    color: #fff;
+}
+.labels_detail_tips_p{
+	list-style: none;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+.labels_more{
+	list-style: none;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+
+.arrow{
+	width: 10px;
+    height: 6px;
+    margin: 0 auto;
+    padding: 5px;
+    background: url('../img/detailed/open_labels.png') no-repeat;
+	background-position: center center;
+}
+.peisong{
+	position: relative;
+	line-height: 21px;
+}
+.address_select{
+	cursor: pointer;
+	list-style: none;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+.address{
+	position: relative;
+    background: #fff;
+    display: none;
+    padding-top: 26px;
+}
+.address_menu{
+	position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.m_sheng , .m_shi , .m_qu{
+	float: left;
+    border-top: 1px solid #666;
+    border-left: 1px solid #666;
+    border-right: 1px solid #666;
+    height: 25px;
+    line-height: 25px;
+    padding: 0px 5px;
+    margin-right: 10px;
+    background: #fff;
+    border-bottom: 1px solid #000;
+}
+.address_nei{
+	float: left;
+    top: 40px;
+    background: #fff;
+    border: 1px solid #666;
+    width: 240px;
+    padding: 15px;
+}
+
+.address_nei li{
+	float: left;
+	margin-right: 15px;
+}
+.stockoutdiv{
+	padding-top: 20px;
+	clear: both;
+	color: rgb(154,154,154);
+}
+.cart{
+	height: 30px;
+    background: #000;
+    color: #fff;
+    font: bold 16px/30px Arial,Helvetica,sans-serif;
+    text-align: center;
+    margin: 12px 0px;
+    cursor: pointer;
+}
+.add_link{
+	height: 30px;
+    background: #fff;
+    border: 1px solid #333;
+    color: #333;
+    font: bold 16px/30px Arial,Helvetica,sans-serif;
+    text-align: center;
+    margin: 10px 0px;
+    cursor: pointer;
+}
+.block{
+	margin-bottom: 35px;
+}
+.block h3{
+	font-size: 13px;
+    font-weight: lighter;
+    font-family: "Times New Roman", "Microsoft YaHei", Times, serif, simhei;
+    color: #212121;
+    border-bottom: 1px solid black;
+    margin: 10px 0 10px;
+    display: block;
+    height: 35px;
+}
+.block p{
+	color: #828282;
+	line-height: 1.5;
+}
+.clear{
+	display: block;
+	clear: both;
+}
+/*推荐*/
+.recommend{
+	padding: 20px 0;
+	overflow: hidden;
+	/*position: absolute;*/
+	width: 960px;
+	margin: 0 auto;
+}
+/*大家都在购*/
+.detail_recommend{
+	text-align: center;
+	position: relative;
+	width: 960px;
+	margin: 0 auto;
+}
+.detail_recommend  p{
+	font-size: 18px;
+    color: #333;
+    display: block;
+    position: relative;
+    background: #fff;
+    width: 150px;
+    margin: 0 auto;
+}
+.line{
+	height: 1px;
+    background: #E1E1E1;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+}
+/*推荐商品*/
+.recommend_list{
+	position: relative;
+    display: block;
+    /*box-sizing: border-box;*/
+    font-size: 14px;
+    /*line-height: 20px;*/
+    color: #9A9A9A;
+    margin-top: 13px;
+}
+/*左边箭头*/
+.recommend_prev_left{
+	/*position: absolute;*/
+    margin-top: 106px;
+    left: 0;
+    float: left;
+    /*cursor: pointer;*/
+    /*border: 0;*/
+	/*vertical-align: top;*/
+}
+/*右边箭头*/
+.recommend_next_right{
+	/*position: relative;*/
+    /*top: 106px;*/
+    float: right;
+    margin-top: -190px;
+    /*right: 0;*/
+    /*cursor: pointer;*/
+    /*border: 0;*/
+	/*vertical-align: top;*/
+}
+/*推荐内容*/
+.slick_list{
+	transform: translate3d(0, 0, 0);
+	position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+.slick_track{
+	position: relative;
+    top: 0;
+    left: 0px;
+    /*height: 600px;*/
+    display: block;
+    background: blue;
+}
+.slick_track_a{
+	/*background: red;*/
+	display: block;
+	padding: 0 10px;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+    color: #000;
+	cursor: pointer;
+}
+.slick_list .slick_track_a  p{
+	font-size: 13px;
+    line-height: 20px;
+    /*color: #565656;*/
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+.slick_track_a_img{
+	display: block;
+	width: 205px;
+	height: 213px;
+	border: 0;
+	vertical-align: top;
+}
+.slick_list .slick_track_a .describe{
+	font-size: 14px;
+    line-height: 14px;
+    color: #9A9A9A;
+    margin-top: 13px;
+}
+.product-name{
+	font-size: 14px;
+    line-height: 14px;
+    color: #565656;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.product-price{
+	font-size: 14px;
+    line-height: 14px;
+    color: #565656;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.slick_list ul{
+	list-style: none;
+}
+.slick_list ul li{
+	display: inline-block;
+	width: 225px;
+	height: 302px;
+	/*background: red;*/
+	margin-left: 5px;
+	float: left;
+}
