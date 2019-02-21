@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf.theroseshop.dao.UsertableDao">
+<!--注册用户-->
+ <insert id="addUsertable">
+    insert into usertable(user_phone, user_pwd, user_name, uuser_sex, user_birthday)
+     values(#{userPhone},#{userPwd},#{userName},#{uuserSex},#{userBirthday},#{user_province},#{user_city},#{user_district},#{user_detailed_address})
+ </insert>
+
+ <!--根据用户编号查询-->
+    <select id="selectByUserId">
+        select * from usertable where user_id=#{userId}
+    </select>
+
+ <!--用户修改-->
+  <update id="updateUsertable" parameterType="Usertable">
+      update usertable set user_phone=#{userPhone},user_pwd=#{userPwd},user_name=#{userName},uuser_sex=#{uuserSex},user_birthday=#{userBirthday},user_province=#{userProvince},user_city=#{userCity},user_district=#{userDistrict},user_detailed_address=#{userDetailedAddress} where user_id=#{userId}
+  </update>
+
+  <!--修改用户状态-->
+    <update id="updateByUserState" parameterType="Usertable">
+        update usertable set user_state=#{userState} where user_id=#{userId}
+    </update>
+
+    <!--用户注销-->
+    <delete id="deleteUsertable" parameterType="int">
+      delete from usertable where user_id=#{userId}
+    </delete>
+
+    <select id="SelectByUserId">
+        select * from usertable where user_id=#{userId}
+    </select>
+
+    <select id="selectByIfAndPage" resultType="Usertable">
+      SELECT  * from usertable
+    </select>
+
+    <!--结果集合 **column为类中的属性也就是表中所对应的字段**-->
+    <select id="loginUsertable" resultType="java.lang.Integer">
+    select * from usertable where user_phone=#{userPhone}
+</select>
+</mapper>

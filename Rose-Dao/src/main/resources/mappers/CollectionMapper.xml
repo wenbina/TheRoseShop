@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf.theroseshop.dao.CollectionDao">
+   <!--收藏商品-->
+<insert id="addCollection" parameterType="Collectiones" useGeneratedKeys="true" >
+    insert into Collection(Collection_userid,Collection_code) values(#{CollectionUserid},#{CollectionCode})
+</insert>
+  <!--取消收藏-->
+    <delete id="deleteCollection" parameterType="int">
+        delete from Collection where Collection_code=#{CollectionCode}
+    </delete>
+    <!--查询收藏-->
+    <select id="selectCollection" resultType="Collectiones">
+        SELECT Collection_code from Collection where Collection_userid=#{userId}
+         LIMIT #{pageNo},#{pageSize}
+    </select>
+</mapper>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf.theroseshop.dao.MemberDao">
+<insert id="addMember" parameterType="member" useGeneratedKeys="true" keyProperty="member.memberId" >
+    insert into Member(Member_overdue,Member_status,Member_code,Member_userid) values(#{Member_overdue},#{Member_status},#{Member_code},#{Member_userid})
+</insert>
+
+    <select id="selectByIfAndPage" resultMap="usertableByIf">
+        SELECT
+        usertable.user_id,
+        usertable.user_phone,
+        usertable.user_name,
+        usertable.uuser_sex,
+        usertable.user_birthday,
+        usertable.user_state,
+        /* usertable.user_province,
+        usertable.user_city,
+        usertable.user_district,*/
+        usertable.user_detailed_address,
+        member.Member_id,
+        member.Member_OpenDate,
+        member.Member_overdue,
+        member.Member_status,
+        member.Member_code,
+        member.Member_userid,
+        membertype.MemberType_name,
+        membertype.MemberType_price,
+        membertype.MemberType_Discount
+        FROM
+        membertype
+        INNER JOIN member ON membertype.MemberType_id = member.Member_code
+        INNER JOIN usertable ON member.Member_userid = usertable.user_id
+
+        <where>
+            <if test="userName!=null and userName!=''">
+                and usertable.user_name like concat(concat('%',#{userName}),'%')
+            </if>
+        </where>
+        limit #{pageNo},#{pageSize}
+    </select>
+
+    <resultMap id="usertableByIf" type="com.nf.theroseshop.from.MemberFrom">
+        <id column="Member_id" property="memberId"/>
+        <result column="Member_OpenDate" property="memberOpenDate"/>
+        <result column="Member_overdue" property="memberOverdue"/>
+        <result column="Member_status" property="memberStatus"/>
+        <result column="Member_userid" property="memberUserid"/>
+        <result column="MemberType_id" property="memberTypeId"/>
+        <result column="MemberType_name" property="memberTypeName"/>
+        <result column="MemberType_price" property="memberTypePrice"/>
+        <result column="MemberType_Discount" property="memberTypeDiscount"/>
+        <result column="user_id" property="userId"/>
+        <result column="user_phone" property="userPhone"/>
+        <result column="user_name" property="userName"/>
+        <result column="uuser_sex" property="uuserSex"/>
+        <result column="user_birthday" property="userBirthday"/>
+
+        <!-- <result column="user_province" property="userProvince"></result>
+         <result column="user_city" property="userCity"></result>
+         <result column="user_district" property="userDistrict"></result>-->
+        <result column="user_detailed_address" property="userDetailedAddress"/>
+        <result column="user_state" property="userState"/>
+    </resultMap>
+    <!--<resultMap id="usertableByIf" type="Member">-->
+        <!--<id column="Member_id" property="memberId"></id>-->
+        <!--<result column="Member_OpenDate" property="memberOpenDate"></result>-->
+        <!--<result column="Member_overdue" property="memberOverdue"></result>-->
+        <!--<result column="Member_status" property="memberStatus"></result>-->
+        <!--<result column="Member_userid" property="memberUserid"></result>-->
+        <!--<collection property="membertypeList" ofType="MemberType">-->
+            <!--<id column="MemberType_id" property="memberTypeId"></id>-->
+            <!--<result column="MemberType_name" property="memberTypeName"></result>-->
+            <!--<result column="MemberType_price" property="memberTypePrice"></result>-->
+            <!--<result column="MemberType_Discount" property="memberTypeDiscount"></result>-->
+        <!--</collection>-->
+        <!--<collection property="usertableList" ofType="Usertable">-->
+            <!--<id column="user_id" property="userId"></id>-->
+            <!--<result column="user_phone" property="userPhone"></result>-->
+            <!--<result column="user_name" property="userName"></result>-->
+            <!--<result column="uuser_sex" property="uuserSex"></result>-->
+            <!--<result column="user_birthday" property="userBirthday"></result>-->
+
+           <!--&lt;!&ndash; <result column="user_province" property="userProvince"></result>-->
+            <!--<result column="user_city" property="userCity"></result>-->
+            <!--<result column="user_district" property="userDistrict"></result>&ndash;&gt;-->
+            <!--<result column="user_detailed_address" property="userDetailedAddress"></result>-->
+            <!--<result column="user_state" property="userState"></result>-->
+        <!--</collection>-->
+    <!--</resultMap>-->
+</mapper>
