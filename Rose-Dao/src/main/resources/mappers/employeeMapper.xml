@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf.theroseshop.dao.EmployeeDao">
+
+
+    <!--组合查询-->
+    <select id="selectemployeeAll" resultMap="employee_all" parameterType="map">
+        select employee_id,employeeType_name,employee_number,employee_pwd,employee_name,
+        employee_tx,employee_code,employee_date,employee_state,employee_worktype
+        from employee e INNER JOIN employeeType t on e.employee_worktype=t.eemployeeType_id
+        <where>
+            <if test="employeeNumber!=null and employeeNumber!=''">
+                and employee_number like concat(concat('%',#{employeeNumber}),'%')
+            </if>
+            <if test="employeeName!=null and employeeName!=''">
+                and employee_name like concat(concat('%',#{employeeName}),'%')
+            </if>
+            <if test="employeeTypeName!=null and employeeTypeName!=''">
+                and employeeType_name like concat(concat('%',#{employeeTypeName}),'%')
+            </if>
+        </where>
+    </select>
+    <!--关联查询结果映射-->
+    <resultMap id="employee_all" type="employee">
+        <id property="employeeId" column="employee_id"></id>
+        <result property="employeeName" column="employee_name"></result>
+        <result property="employeeTx" column="employee_tx"></result>
+        <result property="employeeCode" column="employee_code"></result>
+        <result property="employeeDate" column="employee_date"></result>
+        <result property="employeeWorktype" column="employee_worktype"></result>
+        <result property="employeeNumber" column="employee_number"></result>
+        <result property="employeePwd" column="employee_pwd"></result>
+        <result property="employeeState" column="employee_state"></result>
+        <!--映射关系，指定属性与属性的类型-->
+        <association property="employeetype" javaType="Employeetype">
+            <id property="eemployeeTypeId" column="eemployeeType_id"></id>
+            <result property="employeeTypeName" column="employeeType_name"></result>
+        </association>
+    </resultMap>
+
+
+
+    <!--查询所有-->
+    <select id="selectbyemployeeNumber" resultType="com.nf.theroseshop.entity.Employee">
+        select *
+        from employee
+        where employee_number=#{employeeNumber}
+    </select>
+
+
+
+
+
+    <!--添加，注册用户-->
+    <insert id="addemployee">
+        insert into employee(employee_number,employee_pwd,employee_name,employee_tx,employee_code,
+        employee_date,employee_worktype,employee_state)
+        values(#{employeeNumber},#{employeePwd},#{employeeName},#{employeeTx},#{employeeCode},
+        #{employeeDate},#{employeeWorktype},#{employeeState})
+    </insert>
+
+
+    <!--修改-->
+    <update id="updateEmployee">
+        update employee set
+        employee_name =#{employeeName},employee_tx =#{employeeTx},employee_code =#{employeeCode},
+        employee_date =#{employeeDate},employee_state =#{employeeState},
+        employee_worktype =#{employeeWorktype}
+        <!--<set>-->
+            <!--<if test="employeeName!=null and employeeName!=''">-->
+                <!--employee_name =#{employeeName},-->
+            <!--</if>-->
+            <!--<if test="employeeTx!=null and employeeTx!=''">-->
+                <!--employee_tx =#{employeeTx},-->
+            <!--</if>-->
+            <!--<if test="employeeCode!=null and employeeCode!=''">-->
+                <!--employee_code =#{employeeCode},-->
+            <!--</if>-->
+            <!--<if test="employeeDate!=null and employeeDate!=''">-->
+                <!--employee_date =#{employeeDate},-->
+            <!--</if>-->
+            <!--<if test="employeeState!=null and employeeState!=''">-->
+                <!--employee_state =#{employeeState},-->
+            <!--</if>-->
+            <!--<if test="employeeWorktype!=null and employeeWorktype!=''">-->
+                <!--employee_worktype =#{employeeWorktype}-->
+            <!--</if>-->
+        <!--</set>-->
+        where employee_id=#{employeeId}
+    </update>
+
+    <!--删除-->
+    <delete id="deletebyId">
+        delete from employee where employee_id=#{employee_id}
+    </delete>
+
+    <!--多删除-->
+    <delete id="deleteEmployeebyList">
+        delete from employee where employee_id in
+        <foreach collection="list" open="(" item="employee_id" separator="," close=")">
+            #{employee_id}
+        </foreach>
+    </delete>
+
+
+
+    <!--分页查询 -->
+    <select id="getEmployeePager" resultMap="employee_all" resultType="com.nf.theroseshop.entity.Employee">
+        select employee_id,employeeType_name,employee_number,employee_pwd,employee_name,
+        employee_tx,employee_code,employee_date,employee_state,employee_worktype
+        from employee e INNER JOIN employeeType t on e.employee_worktype=t.eemployeeType_id
+        <where>
+            <if test="employeeNumber!=null and employeeNumber!=''">
+                and employee_number like concat(concat('%',#{employeeNumber}),'%')
+            </if>
+            <if test="employeeName!=null and employeeName!=''">
+                and employee_name like concat(concat('%',#{employeeName}),'%')
+            </if>
+            <if test="employeeTypeName!=null and employeeTypeName!=''">
+                and employeeType_name like concat(concat('%',#{employeeTypeName}),'%')
+            </if>
+        </where>
+        limit #{skip},#{size}
+    </select>
+
+
+
+    <!--获得总数 -->
+    <select id="getEmployeeCount" resultType="int">
+        select count(*) from employee e INNER JOIN employeeType t
+        on e.employee_worktype=t.eemployeeType_id
+        <where>
+            <if test="employeeNumber!=null and employeeNumber!=''">
+                and employee_number like concat(concat('%',#{employeeNumber}),'%')
+            </if>
+            <if test="employeeName!=null and employeeName!=''">
+                and employee_name like concat(concat('%',#{employeeName}),'%')
+            </if>
+            <if test="employeeTypeName!=null and employeeTypeName!=''">
+                and employeeType_name like concat(concat('%',#{employeeTypeName}),'%')
+            </if>
+        </where>
+    </select>
+
+
+
+
+
+
+</mapper>
