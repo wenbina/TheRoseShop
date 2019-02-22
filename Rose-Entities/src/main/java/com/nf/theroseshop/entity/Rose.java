@@ -1,5 +1,6 @@
 package com.nf.theroseshop.entity;
 
+
 public class Rose {
     private int rose_id;
     private  String rose_code;

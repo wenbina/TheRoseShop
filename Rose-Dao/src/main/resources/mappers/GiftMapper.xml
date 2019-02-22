@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf.theroseshop.dao.GiftDao">
+    <!--礼物模糊查询和分页-->
+    <select id="getAll" resultType="Gift">
+        SELECT
+        gift.gift_id,
+        gift.gift_code,
+        gift.gift_name,
+        gift.gift_content,
+        gift.gift_price,
+        gift.gift_reason,
+        gift.gift_composition,
+        gift.gift_story,
+        gift.gift_explain,
+        gift.gift_stock,
+        gift.gift_sale,
+        gift.gift_supplier,
+        gifttype.giftType_id
+        FROM
+        gift
+        INNER JOIN gifttype ON gift.gift_type = gifttype.giftType_id
+        <where>
+            <if test="gift_name!=null and gift_name!=''">
+                or gift_name like concat(concat('%',#{gift_name}),'%')
+            </if>
+            <if test="gift_price!=null and gift_price!=''">
+                or gift_price like concat(concat('%',#{gift_price}),'%')
+            </if>
+        </where>
+        order by gift.gift_id asc
+        limit #{page},#{limit}
+    </select>
+
+    <!--添加礼物-->
+    <insert id="insert" parameterType="Gift">
+      insert into gift(gift_code,gift_name,gift_content,gift_price,gift_reason,gift_composition,gift_story,gift_explain,gift_stock,gift_sale,gift_supplier,gift_type)
+      values (#{gift_code},#{gift_name},#{gift_content},#{gift_price},#{gift_reason},#{gift_composition},#{gift_story},#{gift_explain},#{gift_stock},#{gift_sale},#{gift_supplier},#{gift_type})
+    </insert>
+
+    <!--修改礼物-->
+    <update id="updata" parameterType="Gift">
+      update gift
+      <set>
+          <if test="gift_code!=null and gift_code!=''">
+              gift_code=#{gift_code},
+          </if>
+          <if test="gift_name!=null and gift_name!=''">
+              gift_name=#{gift_name},
+          </if>
+          <if test="gift_content!=null and gift_content!=''">
+              gift_content=#{gift_content},
+          </if>
+          <if test="gift_price!=null and gift_price!=''">
+              gift_price=#{gift_price},
+          </if>
+          <if test="gift_reason!=null and gift_reason!=''">
+              gift_reason=#{gift_reason},
+          </if>
+          <if test="gift_composition!=null and gift_composition!=''">
+              gift_composition=#{gift_composition},
+          </if>
+          <if test="gift_story!=null and gift_story!=''">
+              gift_story=#{gift_story},
+          </if>
+          <if test="gift_explain!=null and gift_explain!=''">
+              gift_explain=#{gift_explain},
+          </if>
+          <if test="gift_stock!=null and gift_stock!=''">
+              gift_stock=#{gift_stock},
+          </if>
+          <if test="gift_sale!=null and gift_sale!=''">
+              gift_sale=#{gift_sale},
+          </if>
+          <if test="gift_supplier!=null and gift_supplier!=''">
+              gift_supplier=#{gift_supplier},
+          </if>
+          <if test="gift_type!=null and gift_type!=''">
+              gift_type=#{gift_type}
+          </if>
+      </set>
+      where gift_id=#{gift_id}
+    </update>
+
+    <!--单删除礼物-->
+    <delete id="deleteid">
+      delete from gift where gift_id=#{gift_id}
+    </delete>
+
+    <!--多删除礼物-->
+    <delete id="deleteids"  parameterType="int">
+       delete from gift
+       where gift_id in
+       <foreach collection="gift_id" open="(" item="gift_id" separator="," close=")">
+          #{gift_id}
+       </foreach>
+    </delete>
+</mapper>
