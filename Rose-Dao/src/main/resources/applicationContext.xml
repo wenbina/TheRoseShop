@@ -32,7 +32,7 @@
         <!-- 初始连接池大小 -->
         <property name="initialPoolSize" value="10"></property>
         <!-- 连接池中连接最小个数 -->
-        <property name="minPoolSize" value="5"></property>
+        <property name="minPoolSize" value="10"></property>
         <!-- 连接池中连接最大个数 -->
         <property name="maxPoolSize" value="20"></property>
     </bean>

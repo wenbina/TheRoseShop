@@ -21,8 +21,8 @@ public class RoseController {
     //鲜花分页查询和模糊查
     @RequestMapping("RoseGetAll")
     @ResponseBody
-    public R RoseGetAll(String rose_name, Double rose_price, int page, int limit){
-        List<Rose> list=roseServer.getAll(rose_name,rose_price,((page-1)*limit),limit);
+    public R RoseGetAll(String rose_name, Double rose_price,Integer rose_stock,Integer rose_sale, int page, int limit){
+        List<Rose> list=roseServer.getAll(rose_name,rose_price,rose_stock,rose_sale,((page-1)*limit),limit);
         return R.ok(list);
     }
 

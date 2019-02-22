@@ -30,7 +30,7 @@ public class RoseDaoTest {
 
     @Test
     public void getAll() {
-        List<Rose> getAll=roseDao.getAll("",1.0,1,10);
+        List<Rose> getAll=roseDao.getAll(null,null,null,null,1,10);
         System.out.println(getAll);
     }
 

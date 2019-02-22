@@ -84,4 +84,10 @@ public class RoseReceptionController {
     public String memberType(){
         return "rosereception/MemberType";
     }
+
+    //访问后台会员说明页面
+    @RequestMapping("/diary")
+    public String diary(){
+        return "rosereception/diary";
+    }
 }

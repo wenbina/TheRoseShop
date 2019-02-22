@@ -5,28 +5,24 @@
     <!--鲜花模糊查询和分页-->
     <select id="getAll" resultType="Rose">
         SELECT
-        rose.rose_id,
-        rose.rose_code,
-        rose.rose_name,
-        rose.rose_content,
-        rose.rose_price,
-        rose.rose_reason,
-        rose.rose_composition,
-        rose.rose_story,
-        rose.rose_explain,
-        rose.rose_stock,
-        rose.rose_sale
+        *
         FROM
         rose
-        <where>
+        <trim prefix="where" prefixOverrides="and|or">
             <if test="rose_name!=null and rose_name!=''">
                 or rose_name like concat(concat('%',#{rose_name}),'%')
             </if>
-            <if test="rose_price!=null and rose_price!=''">
-                or rose_price like concat(concat('%',#{rose_price}),'%')
+            <if test="rose_name!=null and rose_name!=''">
+                or rose_price like concat(concat('%',#{rose_name}),'%')
             </if>
-        </where>
-        order by rose.rose_id asc
+            <if test="rose_name!=null and rose_name!=''">
+                or rose_stock like concat(concat('%',#{rose_name}),'%')
+            </if>
+            <if test="rose_name!=null and rose_name!=''">
+                or rose_sale like concat(concat('%',#{rose_name}),'%')
+            </if>
+        </trim>
+        order by rose.rose_id desc
         limit #{page},#{limit}
     </select>
 
@@ -38,40 +34,40 @@
 
     <!--修改鲜花-->
     <update id="updata" parameterType="Rose">
-      update rose
-      <set>
-          <if test="rose_code!=null and rose_code!=''">
-              rose_code=#{rose_code},
-          </if>
-          <if test="rose_name!=null and rose_name!=''">
-              rose_name=#{rose_name},
-          </if>
-          <if test="rose_content!=null and rose_content!=''">
-              rose_content=#{rose_content},
-          </if>
-          <if test="rose_price!=null and rose_price!=''">
-              rose_price=#{rose_price},
-          </if>
-          <if test="rose_reason!=null and rose_reason!=''">
-              rose_reason=#{rose_reason},
-          </if>
-          <if test="rose_composition!=null and rose_composition!=''">
-              rose_composition=#{rose_composition},
-          </if>
-          <if test="rose_story!=null and rose_story!=''">
-              rose_story=#{rose_story},
-          </if>
-          <if test="rose_explain!=null and rose_explain!=''">
-              rose_explain=#{rose_explain},
-          </if>
-          <if test="rose_stock!=null and rose_stock!=''">
-              rose_stock=#{rose_stock},
-          </if>
-          <if test="rose_sale!=null and rose_sale!=''">
-              rose_sale=#{rose_sale},
-          </if>
-      </set>
-      where rose_id=#{rose_id}
+        update rose
+        <set>
+            <if test="rose_code!=null and rose_code!=''">
+                rose_code=#{rose_code},
+            </if>
+            <if test="rose_name!=null and rose_name!=''">
+                rose_name=#{rose_name},
+            </if>
+            <if test="rose_content!=null and rose_content!=''">
+                rose_content=#{rose_content},
+            </if>
+            <if test="rose_price!=null and rose_price!=''">
+                rose_price=#{rose_price},
+            </if>
+            <if test="rose_reason!=null and rose_reason!=''">
+                rose_reason=#{rose_reason},
+            </if>
+            <if test="rose_composition!=null and rose_composition!=''">
+                rose_composition=#{rose_composition},
+            </if>
+            <if test="rose_story!=null and rose_story!=''">
+                rose_story=#{rose_story},
+            </if>
+            <if test="rose_explain!=null and rose_explain!=''">
+                rose_explain=#{rose_explain},
+            </if>
+            <if test="rose_stock!=null and rose_stock!=''">
+                rose_stock=#{rose_stock},
+            </if>
+            <if test="rose_sale!=null and rose_sale!=''">
+                rose_sale=#{rose_sale},
+            </if>
+        </set>
+        where rose_id=#{rose_id}
     </update>
 
     <!--单删除鲜花-->
@@ -80,11 +76,11 @@
     </delete>
 
     <!--多删除鲜花-->
-    <delete id="deleteids"  parameterType="java.lang.Integer">
-       delete from rose
-       where rose_id in
-       <foreach collection="ids" open="(" item="rose_id" separator="," close=")">
-          #{rose_id}
-       </foreach>
+    <delete id="deleteids" parameterType="java.lang.Integer">
+        delete from rose
+        where rose_id in
+        <foreach collection="ids" open="(" item="rose_id" separator="," close=")">
+            #{rose_id}
+        </foreach>
     </delete>
 </mapper>

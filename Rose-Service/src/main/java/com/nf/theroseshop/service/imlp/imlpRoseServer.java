@@ -13,8 +13,8 @@ public class imlpRoseServer implements RoseServer {
     @Autowired
     RoseDao roseDao;
 
-    public List<Rose> getAll(String rose_name, Double rose_price, int page, int limit) {
-        return roseDao.getAll(rose_name,rose_price,page,limit);
+    public List<Rose> getAll(String rose_name, Double rose_price,Integer rose_stock,Integer rose_sale ,int page, int limit) {
+        return roseDao.getAll(rose_name, rose_price, rose_stock, rose_sale, page, limit);
     }
 
     public int insert(Rose rose) {
