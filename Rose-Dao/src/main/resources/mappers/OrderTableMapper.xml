@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--命名空间应该是对应接口的包名+接口名 -->
 <mapper namespace="com.nf.theroseshop.dao.OrderTableDao">
-    <!--select-->
-    <select id="selectOrder" resultType="Ordertable" resultMap="getOrderData">
+    <!--select orderTable-->
+    <select id="selectOrder" resultType="Ordertable" resultMap="getOrderTable">
       select * from ordertable as ot
       join expressCompany as ec on ot.OrderTable_expressCompany = ec.expressCompany_name
       join usertable as ut on ot.OrderTable_usercode = ut.user_id
@@ -13,7 +13,7 @@
       join expressCompany as ec on ot.OrderTable_expressCompany = ec.expressCompany_name
       join usertable as ut on ot.OrderTable_usercode = ut.user_id
     </select>
-    <resultMap id="getOrderData" type="Ordertable">
+    <resultMap id="getOrderTable" type="Ordertable">
         <id column="OrderTable_id" property="orderTableId"/>
         <result column="OrderTable_build" property="orderTableBuild"/>
         <result column="OrderTable_status" property="orderTableStatus"/>
@@ -43,6 +43,45 @@
             <result column="user_birthday" property="userBirthday"/>
         </association>
     </resultMap>
+    <!--select orderGoods-->
+    <select id="selectOrderGoods" parameterType="Ordergoods" resultMap="getOrderGoods">
+        select * from OrderGoods as og join OrderTable OT on og.OrderGoods_OrderCode = OT.OrderTable_id
+        <where>
+            <if test="orderTableId!=null and orderTableId!=0">
+                OrderTable_id = #{orderTableId}
+            </if>
+        </where>
+    </select>
+    <select id="selectOrderGoodsCount" resultType="int">
+        select count(*) from OrderGoods as og join OrderTable OT on og.OrderGoods_OrderCode = OT.OrderTable_id
+    </select>
+    <resultMap id="getOrderGoods" type="Ordergoods">
+        <id column="OrderGoods_id" property="orderGoodsId"/>
+        <result column="OrderGoods_code" property="orderGoodsCode"/>
+        <result column="OrderGoods_name" property="orderGoodsName"/>
+        <result column="OrderGoods_Num" property="orderGoodsNum"/>
+        <result column="OrderGoods_Price" property="orderGoodsPrice"/>
+        <result column="OrderGoods_total" property="orderGoodsTotal"/>
+        <result column="OrderGoods_OrderCode" property="orderGoodsOrderCode"/>
+        <association property="ordertable" javaType="Ordertable">
+            <id column="OrderTable_id" property="orderTableId"/>
+            <result column="OrderTable_build" property="orderTableBuild"/>
+            <result column="OrderTable_status" property="orderTableStatus"/>
+            <result column="OrderTable_getName" property="orderTableGetName"/>
+            <result column="OrderTable_getPhone" property="orderTableGetPhone"/>
+            <result column="OrderTable_getAdress" property="orderTableGetAdress"/>
+            <result column="OrderTable_gettime" property="orderTableGettime"/>
+            <result column="OrderTable_getType" property="orderTableGetType"/>
+            <result column="OrderTable_expressCode" property="orderTableExpressCode"/>
+            <result column="OrderTable_expressCompany" property="orderTableExpressCompany"/>
+            <result column="OrderTable_rejectReason" property="orderTableRejectReason"/>
+            <result column="OrderTable_Money" property="orderTableMoney"/>
+            <result column="OrderTable_Discount" property="orderTableDiscount"/>
+            <result column="OrderTable_TotalMoney" property="orderTableTotalMoney"/>
+            <result column="OrderTable_usercode" property="orderTableUsercode"/>
+            <result column="OrderTable_close" property="orderTableClose"/>
+        </association>
+    </resultMap>
     <!--delete-->
     <delete id="deleteOrder" parameterType="int">
         delete from ordertable where OrderTable_id = #{id}
@@ -57,8 +96,29 @@
         insert into ordertable (OrderTable_id, OrderTable_build, OrderTable_status, OrderTable_getName,
         OrderTable_getPhone, OrderTable_getAdress, OrderTable_gettime, OrderTable_getType, OrderTable_expressCode,
          OrderTable_expressCompany, OrderTable_rejectReason, OrderTable_Money, OrderTable_Discount, OrderTable_TotalMoney,
-         OrderTable_usercode, OrderTable_close) values (#{orderId},#{orderBuild},#{orderStatus},#{orderGetName},#{orderGetPhone}
-         ,#{orderGetAdress},#{orderGetTime},#{orderGetType},#{orderExpressCode},#{orderExpressCompany}#{orderRejectReason},#{orderMoney}
-         ,#{orderDiscount},#{orderTotalMoney},#{orderUserCode},#{orderClose});
+         OrderTable_usercode, OrderTable_close) values (#{orderTableId},#{orderTableBuild},#{orderTableStatus},#{orderTableGetName},
+         #{orderTableGetPhone},#{orderTableGetAdress},#{orderTableGettime},#{orderTableGetType},#{orderTableExpressCode},#{orderTableExpressCompany},
+         #{orderTableRejectReason},#{orderTableMoney},#{orderTableDiscount},#{orderTableTotalMoney},#{orderTableUsercode},#{orderTableClose});
     </insert>
+    <update id="updateOrder" parameterType="Ordertable">
+        update ordertable
+        <set>
+            <if test="OrderTable_status!=null and OrderTable_status!=''">
+                OrderTable_status = #{orderTableStatus}
+            </if>
+            <if test="OrderTable_getName!=null and OrderTable_getName!=''">
+                OrderTable_getName = #{orderTableGetName}
+            </if>
+            <if test="OrderTable_getPhone!=null and OrderTable_getPhone!=''">
+                OrderTable_getPhone = #{orderTableGetPhone}
+            </if>
+            <if test="OrderTable_getAdress!=null and OrderTable_getAdress!=''">
+                OrderTable_getAdress = #{orderTableGetAdress}
+            </if>
+            <if test="OrderTable_close!=null and OrderTable_close!=''">
+                OrderTable_close = #{orderTableClose}
+            </if>
+        </set>
+        where OrderTable_id=#{orderTableId}
+    </update>
 </mapper>
