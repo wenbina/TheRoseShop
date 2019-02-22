@@ -44,8 +44,8 @@
         <!-- 别名 -->
         <property name="typeAliasesPackage" value="com.nf.theroseshop.entity"></property>
         <!-- sql映射文件路径 -->
-        <property name="mapperLocations" value="classpath*:mappers/*Mapper.xml"></property>
-        <!-- sql映射文件路径 -->
+        <property name="mapperLocations" value="classpath:mappers/*Mapper.xml"></property>
+        <!-- mybatis配置文件位置 -->
         <property name="configLocation" value="classpath:mybatis.xml"></property>
     </bean>
 
@@ -66,7 +66,12 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!--6 容器自动扫描IOC组件  -->
-    <context:component-scan base-package="com.nf.theroseshop.dao"></context:component-scan>
+    <!--<context:component-scan base-package="com.nf.theroseshop.dao">-->
+    <context:component-scan base-package="com.nf.theroseshop.dao">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+    </context:component-scan>
 
     <!--7 aspectj支持自动代理实现AOP功能 -->
     <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>

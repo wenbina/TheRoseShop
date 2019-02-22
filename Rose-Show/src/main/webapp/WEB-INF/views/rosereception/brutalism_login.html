@@ -50,7 +50,7 @@
 						<span class="welcome">欢迎回来</span>
 						<span class="enroll">还不是会员？<a href="/reception/brutalism_register" style="color:#d24381">立即注册</a></span>
 						<div class="loginData">
-							<p><input type="text" id="userName" name="" placeholder="手机号" /></p>
+							<p><input type="text" id="userName" name="" placeholder="手机号" onblur="isPhone(this.value);"/></p>
 							<p><input type="password" id="userPassword" name="" placeholder="密码" /></p>
 							<p><input type="button" value="登录" id="btn_Login" /></p>
 							<p class="statu"><span style="float: left;"><input type="checkbox" id="" />7天内自动登录</span><span class="forgetPwd" style="float: right;"><a href="#">忘记密码?</a></span></p>
@@ -118,8 +118,45 @@
 		
 		<!--javascript-->
 		<script type="text/javascript" src="../../../brutalism/js/jquery.min.js" ></script>
-		<script src="" type="text/javascript" charset="utf-8">
-			
+		<script type="text/javascript" charset="utf-8">
+            var app={
+                init:function () {
+                    app.bindEvent();
+                },
+                bindEvent:function () {
+                    $("#btn_Login").click(app.brutalismLogin);
+                },
+                brutalismLogin:function () {
+                    $.ajax({
+                        url:"/usertable/queryAllUsertable",
+                        type:"get",
+                        dataType:"json",
+                        data:{userPhone:$("#userName").val(),userPwd:$("#userPassword").val()},
+                        success:function (data) {
+                            console.log(data);
+                            console.log(data.data);
+                            //alert(data.data);
+                            if(data.msg=="success" ){
+                                alert("登录成功!");
+                                location.href="index";
+                            }
+                            else{
+                                alert(data.msg);
+                            }
+                        }
+                    });
+                }
+            }
+            function isPhone(phone){
+                //alert(phone)
+                var RegCellPhone = /^(1)([0-9]{10})?$/;
+                var  falg=phone.search(RegCellPhone);
+                if (falg==-1){
+                    alert("手机号不正确");
+                    this.focus();
+                }
+            }
+            app.init();
 		</script>
 	</body>
 </html>

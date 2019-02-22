@@ -20,7 +20,7 @@
 <div class="roseMain" id="rose_background">
     <!--头部-->
     <div class="roseTitle">
-        <div class="roseLogin">欢迎来到 THE ROSE SHOP！ <a href="/reception/brutalism_login">登录</a> <a
+        <div class="roseLogin">欢迎来到 THE ROSE SHOP！ <a href="/reception/brutalism_login" class="login">登录</a> <a
                 href="/reception/brutalism_register">注册</a></div>
         <div class="roseLogo">
             <a href="/reception/index">
@@ -310,7 +310,32 @@
             }
         })
     }())
-
+    var app={
+        init:function () {
+            app.loginData();
+        },
+        loginData:function () {
+            $.ajax({
+                url:"/usertable/getUserSession",
+                dataType:"json",
+                success:function (data) {
+                    //alert(data.msg);
+                    var usertable =data;
+                    if(usertable != null)
+                    {
+                        if(usertable.userPhone!=null)
+                        {
+                            //alert(data.msg);
+                            $(".login").html(usertable.userPhone);
+                        }else{
+                            $(".login").html("登录");
+                        }
+                    }
+                }
+            })
+        }
+    }
+    app.init();
 </script>
 </body>
 </html>

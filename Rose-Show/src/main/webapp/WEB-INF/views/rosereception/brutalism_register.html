@@ -6,7 +6,14 @@
 		<title>野兽派</title>
 		<link rel="shortcut icon" href="../../../brutalism/brutalismFrontImg/globalImg/favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" type="text/css" href="../../../brutalism/css/brutalism_register.css" />
-	</head>
+        <style>
+            #getSms{
+                background: black;
+                color: white;
+                border: none;
+            }
+        </style>
+    </head>
 
 	<body>
 		<!--所有内容都包在这个div里面-->
@@ -51,7 +58,7 @@
 						<span class="enroll">已经是会员？<a href="/reception/brutalism_login" style="color:#d24381">立即登录</a></span>
 						<div class="loginData">
 							<p>
-								<input type="text" id="userName" name="" placeholder="姓名" />
+								<input type="text" id="userName" name="userName" placeholder="姓名" />
 								<select name="gender" id="gender">
 									<option value="">保密</option>
 									<option value="">先生</option>
@@ -59,10 +66,11 @@
 									<option value="">小姐</option>
 								</select>
 							</p>
-							<p><input type="password" id="userPassword" name="" placeholder="密码" /></p>
-							<p><input type="password" id="confirmPwd" name="" placeholder="确认密码" /></p>
-							<p><input type="text" id="userPhone" name="" placeholder="手机号" /><input type="button" value="获取验证码" id="getSms" /></p>
-							<p><input type="text" id="smsCode" name="" placeholder="短信验证码" /></p>
+							<p><input type="password" id="userPassword" name="userPwd" placeholder="密码" /></p>
+							<p><input type="password" id="confirmPwd" placeholder="确认密码" /></p>
+							<p><input type="text" id="userPhone" name="userPhone" placeholder="手机号" onblur="isPhone(this.value)"/>
+								<input type="button" value="获取验证码" id="getSms"  /></p>
+							<p><input type="text" id="smsCode" name="phoneCode" placeholder="短信验证码" /></p>
 							<p class="statu">
 								<span style="float: left;"><input type="checkbox" checked="checked" id="" />我已阅读和同意</span>
 								<span class="deal">《花宫坊服务条款》</span>
@@ -161,8 +169,146 @@
 		
 		<!--javascript-->
 		<script type="text/javascript" src="../../../brutalism/js/jquery.min.js" ></script>
-		<script src="" type="text/javascript" charset="utf-8">
-			
+		<script type="text/javascript" charset="utf-8">
+
+            function isPhone(phone){
+                //alert(phone)
+                var RegCellPhone = /^(1)([0-9]{10})?$/;
+                var  falg=phone.search(RegCellPhone);
+                if (falg==-1){
+                    alert("手机号不正确");
+                    this.focus();
+                }
+            }
+            //发送验证码
+            $("body").on("click","#getSms",function () {
+                //验证码计时60秒
+                var wait=60;
+                function time(o) {
+                    if (wait == 0) {
+                        o.removeAttribute("disabled");
+                        o.value="发送验证码";
+                        wait = 60;
+                    } else {
+                        o.setAttribute("disabled", true);
+                        o.value="重新发送(" + wait + ")";
+                        wait--;
+                        setTimeout(function() {
+                            time(o);
+                        }, 1000)
+                    }
+                }
+                time(this);
+                //发送请求获得验证码
+                $.ajax({
+                    url:"/usertable/getCode",
+                    type:"GET",
+                    data:{userPhone:$("#userPhone").val()}
+                }).done(function (data) {
+                    console.log($("#userPhone").val());
+                    /* alert(data.msg);*/
+                });
+            });
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            if (month < 10) {
+                month = "0" + month;
+            }
+            if (day < 10) {
+                day = "0" + day;
+            }
+            var nowDate = year + "-" + month + "-" + day;
+			var optiones=$("#gender option:selected").text();
+            //注册
+			var app={
+			    init:function () {
+					app.bindEvent();
+                },bindEvent:function () {
+					$("#btn_Register").click(app.brutalismRegisterData)
+                },
+				brutalismRegisterData:function () {
+			        console.log($("#smsCode").val());
+					$.ajax({
+						url:"/usertable/insertUsertable",
+						type:"post",
+						data:{userPhone:$("#userPhone").val(),userPwd:$("#userPassword").val(),userName:$("#userName").val(),uuserSex:optiones,phoneCode:$("#smsCode").val()},
+						success:function (data) {
+                            var pwd1=document.getElementById("userPassword").value;
+                            var pwd2=document.getElementById("confirmPwd").value;
+                            console.log(pwd1);
+                            console.log(pwd2);
+                            if(pwd1==pwd2){
+                                console.log(data);
+                                if(data.code==1){
+                                    location.href="brutalism_login";
+                                }
+                                else{
+                                    alert("注册失败!");
+                                }
+                            }else
+                            {
+                                alert("两次密码不一致!");
+                                return false;
+                            }
+                        }
+					});
+                }
+			}
+			app.init();
+          /*  $("body").on("click","#btn_Register",function () {
+                $.ajax({
+                    url:"/usertable/insertUsertable",
+                    type:"POST",
+                    data:{userPhone:$("#userPhone").val(),userPwd:$("#userPassword").val(),userName:$("#userName").val(),uuserSex:optiones},
+					success:function (data) {
+                        var pwd1=document.getElementById("userPassword").value;
+                        var pwd2=document.getElementById("confirmPwd").value;
+                        alert(pwd1);
+                        alert(pwd2);
+                        if(pwd1==pwd2){
+                            alert(data);
+                            if(data.code>1){
+                                alert("注册成功!");
+                                location.href="brutalism_login";
+                            }
+                            else{
+                                alert("注册失败!");
+                            }
+                        }else
+                        {
+                            alert("两次密码不一致!");
+                            return false;
+                        }
+                    }
+				});*/
+               /* $.ajax({
+                    url:"/usertable/insertUsertable",
+                    type:"POST",
+                    data:{userPhone:$("#userPhone").val(),userPwd:$("#userPassword").val(),userName:$("#userName").val(),uuserSex:optiones},
+                }).done(function (data) {
+                    var pwd1=document.getElementById("userPassword").value;
+                    var pwd2=document.getElementById("confirmPwd").value;
+                    alert(pwd1);
+                    alert(pwd2);
+                    if(pwd1==pwd2){
+                        alert(data);
+                        if(data.code>1){
+                            alert("注册成功!");
+                            location.href="brutalism_login";
+                        }
+                        else{
+                            alert("注册失败!");
+                        }
+                    }else
+                    {
+                        alert("两次密码不一致!");
+                        return false;
+                    }*/
+                /*});*/
+           /* });*/
+
 		</script>
 	</body>
 </html>
