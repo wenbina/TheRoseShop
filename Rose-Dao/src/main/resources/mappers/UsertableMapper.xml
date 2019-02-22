@@ -4,10 +4,14 @@
 <mapper namespace="com.nf.theroseshop.dao.UsertableDao">
 <!--注册用户-->
  <insert id="addUsertable">
-    insert into usertable(user_phone, user_pwd, user_name, uuser_sex, user_birthday)
-     values(#{userPhone},#{userPwd},#{userName},#{uuserSex},#{userBirthday},#{user_province},#{user_city},#{user_district},#{user_detailed_address})
+    insert into usertable(user_phone, user_pwd, user_name, uuser_sex)
+     values(#{userPhone},#{userPwd},#{userName},#{uuserSex})
  </insert>
 
+  <!--用户登录-->
+   <!-- <select id="brutalismLogin" resultType="java.lang.Integer">
+        select count(*) from usertable where user_phone=#{userPhone} and user_pwd=#{userPwd}
+    </select>-->
  <!--根据用户编号查询-->
     <select id="selectByUserId">
         select * from usertable where user_id=#{userId}
@@ -28,16 +32,31 @@
       delete from usertable where user_id=#{userId}
     </delete>
 
-    <select id="SelectByUserId">
+    <!--<select id="SelectByUserId">
         select * from usertable where user_id=#{userId}
-    </select>
+    </select>-->
 
     <select id="selectByIfAndPage" resultType="Usertable">
       SELECT  * from usertable
     </select>
 
     <!--结果集合 **column为类中的属性也就是表中所对应的字段**-->
-    <select id="loginUsertable" resultType="java.lang.Integer">
-    select * from usertable where user_phone=#{userPhone}
-</select>
+    <select id="loginUsertable" resultMap="loginUsertableMap">
+      select * from usertable where user_phone=#{userPhone}
+    </select>
+
+    <resultMap id="loginUsertableMap" type="com.nf.theroseshop.entity.Usertable">
+        <id property="userId" column="user_id"/>
+        <result property="userPhone" column="user_phone"/>
+        <result property="userPwd" column="user_pwd"/>
+        <result property="userName" column="user_name"/>
+        <result property="uuserSex" column="uuser_sex"/>
+        <result property="userBirthday" column="user_birthday"/>
+        <result property="userState" column="user_state"/>
+        <result property="userProvince" column="user_province"/>
+        <result property="userCity" column="user_city"/>
+        <result property="userDistrict" column="user_district"/>
+        <result property="userDetailedAddress" column="user_detailed_address"/>
+    </resultMap>
+
 </mapper>

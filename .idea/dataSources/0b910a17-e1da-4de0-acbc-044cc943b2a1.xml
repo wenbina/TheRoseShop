@@ -1307,7 +1307,7 @@ Collection_userid</ColNames>
     </column>
     <column id="311" parent="236" name="GoodsPut_goods_operator">
       <Position>4</Position>
-      <Comment>入库单操作员(外键) </Comment>
+      <Comment>入库单操作员(外键)</Comment>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>

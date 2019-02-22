@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UsertableService {
     //用户注册
-    int insertUsertable(Usertable usertable);
+    int insertUsertable(String userPhone, String userPwd,String userName,String uuserSex);
     //用户修改
     int editUsertable(Usertable usertable);
     //修改用户状态
@@ -17,5 +17,6 @@ public interface UsertableService {
     //
     List<Usertable> queryAllUsertable();
     //用户登录
-    Usertable selectUsertable(@Param("userPhone")String userPhone);
+    Usertable queryAllUsertable(@Param("userPhone")String userPhone);
+
 }

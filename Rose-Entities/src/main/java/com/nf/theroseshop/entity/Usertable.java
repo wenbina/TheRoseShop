@@ -117,6 +117,13 @@ public class Usertable {
         this.userPwd = userPwd;
     }
 
+    public Usertable(String userPhone, String userPwd, String userName, String uuserSex) {
+        this.userPhone = userPhone;
+        this.userPwd = userPwd;
+        this.userName = userName;
+        this.uuserSex = uuserSex;
+    }
+
     public Usertable(String userPhone, String userPwd, String userName, String uuserSex, String userBirthday, String userProvince, String userCity, String userDistrict, String userDetailedAddress) {
         this.userPhone = userPhone;
         this.userPwd = userPwd;

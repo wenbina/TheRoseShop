@@ -31,15 +31,15 @@ public class UsertableDaoTest {
         UsertableDao usertableDao=ctx.getBean(UsertableDao.class);
         Usertable usertable=new Usertable();
         usertable.setUserPhone("13110236784");
-        usertable.setUserPwd("qwe");
+        usertable.setUserPwd("qweery");
         usertable.setUserName("李四");
         usertable.setUuserSex("男");
 
 //        String string = "2016-10-24";
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        usertable.setUserBirthday("2018-11-22");
-        usertable.setUserState(0);
-        System.out.println(usertableDao.addUsertable(usertable));
+       /* usertable.setUserBirthday("2018-11-22");
+        usertable.setUserState(0);*/
+       // System.out.println(usertableDao.addUsertable(usertable));
     }
 
     @Test
