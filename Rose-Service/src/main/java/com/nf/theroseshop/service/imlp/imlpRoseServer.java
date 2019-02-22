@@ -13,8 +13,12 @@ public class imlpRoseServer implements RoseServer {
     @Autowired
     RoseDao roseDao;
 
-    public List<Rose> getAll(String rose_name, Double rose_price, int page, int limit) {
-        return roseDao.getAll(rose_name,rose_price,page,limit);
+    public List<Rose> flowerAllData(Rose rose) {
+        return roseDao.flowerAllData(rose);
+    }
+
+    public List<Rose> getAll(String rose_name, Double rose_price,Integer rose_stock,Integer rose_sale,int page, int limit) {
+        return roseDao.getAll(rose_name,rose_price,rose_stock,rose_sale,page,limit);
     }
 
     public int insert(Rose rose) {
@@ -29,6 +33,7 @@ public class imlpRoseServer implements RoseServer {
         rose1.setRose_composition(rose.getRose_composition());
         rose1.setRose_code(rose.getRose_code());
         rose1.setImmortal_sale(rose.getImmortal_sale());
+        rose1.setRose_smallPirture(rose.getRose_smallPirture());
         return roseDao.insert(rose1);
     }
 
@@ -45,6 +50,7 @@ public class imlpRoseServer implements RoseServer {
         rose1.setRose_composition(rose.getRose_composition());
         rose1.setRose_code(rose.getRose_code());
         rose1.setImmortal_sale(rose.getImmortal_sale());
+        rose1.setRose_smallPirture(rose.getRose_smallPirture());
         return roseDao.updata(rose1);
     }
 

@@ -6,6 +6,7 @@ import com.nf.theroseshop.service.imlp.imlpGiftServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,11 +19,19 @@ public class GiftController {
     @Autowired
     imlpGiftServer giftServer;
 
+    //查看全部的数据
+    @RequestMapping("GiftFlowerAllData")
+    @ResponseBody
+    public R GiftFlowerAllData(Gift gift){
+        List<Gift> list=giftServer.flowerAllData(gift);
+        return R.ok(list);
+    }
+
     //礼物分页查询和模糊查
     @RequestMapping("GiftGetAll")
     @ResponseBody
-    public R GiftGetAll(String gift_name, Double gift_price, int page, int limit){
-        List<Gift> list=giftServer.getAll(gift_name,gift_price,((page-1)*limit),limit);
+    public R GiftGetAll(String gift_name, Double gift_price, Integer gift_stock, Integer gift_sale, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int limit){
+        List<Gift> list=giftServer.getAll(gift_name,gift_price,gift_stock,gift_sale,((page-1)*limit),limit);
         return R.ok(list);
     }
 

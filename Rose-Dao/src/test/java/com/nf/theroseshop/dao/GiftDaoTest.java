@@ -29,7 +29,7 @@ public class GiftDaoTest {
 
     @Test
     public void getAll() {
-        List<Gift> getAll=giftDao.getAll("",1314.0,1,10);
+        List<Gift> getAll=giftDao.getAll("",null,null,null,1,10);
         System.out.println(getAll);
     }
 

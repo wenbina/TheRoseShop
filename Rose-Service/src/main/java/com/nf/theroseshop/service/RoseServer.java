@@ -6,8 +6,10 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface RoseServer {
+    //查看全部的数据
+    List<Rose> flowerAllData(Rose rose);
     //香薰分页查询和模糊查
-    List<Rose> getAll(String rose_name,Double rose_price,int page,int limit);
+    List<Rose> getAll(String rose_name,Double rose_price,Integer rose_stock,Integer rose_sale,int page,int limit);
     //添加香薰
     int insert(Rose rose);
     //修改香薰

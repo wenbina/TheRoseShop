@@ -161,33 +161,19 @@
 			<div id="product_list" class="center">
 				<div id="product_listRose" class="center" style="margin: 10px">
 					<!--鲜花-->
-					<div style="text-align: center;margin-bottom: 20px;margin-left: -20px"><img src="../../../brutalism/brutalismFrontImg/globalImg/flowerTitle.png" height="61" width="940"/></div>
-					<div class="block_product left product" v-for="(item,index) in rose">
-						<a href="/reception/detailed" title="“梦里数钱”新年开运礼盒" target="_blank">
-							<img class="lazy" v-bind:src="'../../../brutalism/brutalismFrontImg/goodsImg/flower/longBox/'+item.rose_smallPirture" alt="“梦里数钱”新年开运礼盒" width="300" height="313"></a>
-						<h2 class="product-name clearfix">
-							<a href="#" title="“梦里数钱”新年开运礼盒" target="_blank">
-								<span>{{item.beast}}</span>
-								<span class="name">{{item.rose_name}}</span>
-								<span style="color:#b4b4b4">{{item.rose_composition}}</span>
-								<span class="price">{{item.rose_price}}元</span>
-							</a>
-						</h2>
+					<div class="update_info" style="text-align: center;margin-bottom: 20px;margin-left: -20px">
+						<img src="../../../brutalism/brutalismFrontImg/globalImg/giftTitle.png" height="61"
+							 width="940"/>
 					</div>
-				</div>
-				<!--永生花-->
-
-				<div id="likeFlower" style="text-align: center;margin-bottom: 20px"><img src="../../../brutalism/brutalismFrontImg/globalImg/preservedFreshFlowerTitle.png" height="61" width="940"/></div>
-				<div id="product_listFlower" class="center" style="display: none">
-					<div class="block_product left product" v-for="(item,index) in immortal">
+					<div class="block_product left product" v-for="(item,index) in gift">
 						<a href="/reception/detailed" title="“梦里数钱”新年开运礼盒" target="_blank">
-							<img class="lazy" v-bind:src="'../../../brutalism/brutalismFrontImg/goodsImg/preservedFreshFlower/'+item.immortal_smallPirture" alt="“梦里数钱”新年开运礼盒" width="300" height="313"></a>
+							<img class="lazy" v-bind:src="'../../../brutalism/brutalismFrontImg/goodsImg/gift/'+item.gift_smallPirture" alt="“梦里数钱”新年开运礼盒" width="300" height="313"></a>
 						<h2 class="product-name clearfix">
 							<a href="#" title="“梦里数钱”新年开运礼盒" target="_blank">
 								<span>{{item.beast}}</span>
-								<span class="name">{{item.immortal_name}}</span>
-								<span style="color:#b4b4b4">{{item.immortal_composition}}</span>
-								<span class="price">{{item.immortal_price}}元</span>
+								<span class="name">{{item.gift_name}}</span>
+								<span style="color:#b4b4b4">{{item.gift_composition}}</span>
+								<span class="price">{{item.gift_price}}元</span>
 							</a>
 						</h2>
 					</div>
@@ -287,29 +273,18 @@
 	var vm=new Vue({
 		el:"#product_list",
 		data:{
-            rose:[],
-            immortal:[]
+            gift:[],
 		},
         methods:{
             getUserAll(){
 				var that=this;
                 $.ajax({
-                    url: "http://192.168.43.137:8080/Rose/RoseFlowerAllData",
+                    url: "http://192.168.43.137:8080/Gift/GiftFlowerAllData",
                     contentType: "application/json;charset=utf-8",
                     dataType: "json",
                     type: "get",
                     success: function (data) {
-                        that.rose = data.data;
-                        console.log(data.data);
-                    }
-                });
-                $.ajax({
-                    url: "http://192.168.43.137:8080/Immortal/ImmortalFlowerAllData",
-                    contentType: "application/json;charset=utf-8",
-                    dataType: "json",
-                    type: "get",
-                    success: function (data) {
-                        that.immortal = data.data;
+                        that.gift = data.data;
                         console.log(data.data);
                     }
                 });
@@ -319,7 +294,4 @@
             this.getUserAll();
         }
 	});
-	$("body").on("click","#likeFlower",function () {
-	    $("#product_listFlower").css("display","block");
-    })
 </script>

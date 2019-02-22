@@ -30,7 +30,7 @@ public class RoseDaoTest {
 
     @Test
     public void getAll() {
-        List<Rose> getAll=roseDao.getAll("",1.0,1,10);
+        List<Rose> getAll=roseDao.getAll("",null,null,null,1,10);
         System.out.println(getAll);
     }
 
@@ -53,5 +53,12 @@ public class RoseDaoTest {
         list.add(42);
         int deleteids=roseDao.deleteids(list);
         System.out.println(deleteids);
+    }
+
+    @Test
+    public void flowerAllData() {
+        Rose rose=new Rose();
+        List<Rose> list=roseDao.flowerAllData(rose);
+        System.out.println(list);
     }
 }

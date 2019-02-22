@@ -15,11 +15,12 @@ public class Immortal {
   private int immortal_stock;
   private int immortal_sale;
   private int immortal_supplier;
+  private String immortal_smallPirture;
 
   public Immortal() {
   }
 
-  public Immortal(int immortal_id, String immortal_code, String immortal_name, String immortal_content, double immortal_price, String immortal_reason, String immortal_composition, String immortal_story, String immortal_explain, int immortal_stock, int immortal_sale, int immortal_supplier) {
+  public Immortal(int immortal_id, String immortal_code, String immortal_name, String immortal_content, double immortal_price, String immortal_reason, String immortal_composition, String immortal_story, String immortal_explain, int immortal_stock, int immortal_sale, int immortal_supplier, String immortal_smallPirture) {
     this.immortal_id = immortal_id;
     this.immortal_code = immortal_code;
     this.immortal_name = immortal_name;
@@ -32,6 +33,7 @@ public class Immortal {
     this.immortal_stock = immortal_stock;
     this.immortal_sale = immortal_sale;
     this.immortal_supplier = immortal_supplier;
+    this.immortal_smallPirture = immortal_smallPirture;
   }
 
   @Override
@@ -49,6 +51,7 @@ public class Immortal {
             ", immortal_stock=" + immortal_stock +
             ", immortal_sale=" + immortal_sale +
             ", immortal_supplier=" + immortal_supplier +
+            ", immortal_smallPirture='" + immortal_smallPirture + '\'' +
             '}';
   }
 
@@ -146,5 +149,13 @@ public class Immortal {
 
   public void setImmortal_supplier(int immortal_supplier) {
     this.immortal_supplier = immortal_supplier;
+  }
+
+  public String getImmortal_smallPirture() {
+    return immortal_smallPirture;
+  }
+
+  public void setImmortal_smallPirture(String immortal_smallPirture) {
+    this.immortal_smallPirture = immortal_smallPirture;
   }
 }

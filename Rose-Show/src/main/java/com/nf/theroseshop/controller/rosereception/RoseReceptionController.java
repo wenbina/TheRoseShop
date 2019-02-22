@@ -84,4 +84,16 @@ public class RoseReceptionController {
     public String memberType(){
         return "rosereception/MemberType";
     }
+
+    //访问前台香薰页面
+    @RequestMapping("/fragrantShow")
+    public String fragrantShow(){
+        return "rosereception/fragrantShow";
+    }
+
+    //访问前台礼物页面
+    @RequestMapping("/giftShow")
+    public String giftShow(){
+        return "rosereception/giftShow";
+    }
 }

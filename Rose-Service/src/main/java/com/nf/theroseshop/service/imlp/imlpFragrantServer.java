@@ -13,8 +13,12 @@ public class imlpFragrantServer implements FragrantServer {
     @Autowired
     FragrantDao fragrantDao;
 
-    public List<Fragrant> getAll(String Fragrant_name, Double Fragrant_price, int page, int limit) {
-        return fragrantDao.getAll(Fragrant_name,Fragrant_price,page,limit);
+    public List<Fragrant> getAll(String Fragrant_name, Double Fragrant_price,Integer Fragrant_Stock,Integer Fragrant_sale,int page, int limit) {
+        return fragrantDao.getAll(Fragrant_name,Fragrant_price,Fragrant_Stock,Fragrant_sale,page,limit);
+    }
+
+    public List<Fragrant> flowerAllData(Fragrant fragrant) {
+        return fragrantDao.flowerAllData(fragrant);
     }
 
     public int insert(Fragrant fragrant) {
@@ -31,6 +35,7 @@ public class imlpFragrantServer implements FragrantServer {
         fragrant1.setFragrant_Stock(fragrant.getFragrant_Stock());
         fragrant1.setFragrant_sale(fragrant.getFragrant_sale());
         fragrant1.setFragrant_supplier(fragrant.getFragrant_supplier());
+        fragrant1.setFragrant_smallPirture(fragrant.getFragrant_smallPirture());
         return fragrantDao.insert(fragrant1);
     }
 
@@ -49,6 +54,7 @@ public class imlpFragrantServer implements FragrantServer {
         fragrant1.setFragrant_Stock(fragrant.getFragrant_Stock());
         fragrant1.setFragrant_sale(fragrant.getFragrant_sale());
         fragrant1.setFragrant_supplier(fragrant.getFragrant_supplier());
+        fragrant1.setFragrant_smallPirture(fragrant.getFragrant_smallPirture());
         return fragrantDao.updata(fragrant1);
     }
 

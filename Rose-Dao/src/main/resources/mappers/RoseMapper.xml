@@ -2,38 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--命名空间应该是对应接口的包名+接口名 -->
 <mapper namespace="com.nf.theroseshop.dao.RoseDao">
+    <!--查看全部的数据-->
+    <select id="flowerAllData" resultType="Rose">
+        select * from rose
+    </select>
     <!--鲜花模糊查询和分页-->
     <select id="getAll" resultType="Rose">
-        SELECT
-        rose.rose_id,
-        rose.rose_code,
-        rose.rose_name,
-        rose.rose_content,
-        rose.rose_price,
-        rose.rose_reason,
-        rose.rose_composition,
-        rose.rose_story,
-        rose.rose_explain,
-        rose.rose_stock,
-        rose.rose_sale
-        FROM
-        rose
-        <where>
+        SELECT * FROM rose
+        <trim prefix="where" prefixOverrides="and|or">
             <if test="rose_name!=null and rose_name!=''">
                 or rose_name like concat(concat('%',#{rose_name}),'%')
             </if>
-            <if test="rose_price!=null and rose_price!=''">
-                or rose_price like concat(concat('%',#{rose_price}),'%')
+            <if test="rose_name!=null and rose_name!=''">
+                or rose_price like concat(concat('%',#{rose_name}),'%')
             </if>
-        </where>
-        order by rose.rose_id asc
+            <if test="rose_name!=null and rose_name!=''">
+                or rose_stock like concat(concat('%',#{rose_name}),'%')
+            </if>
+            <if test="rose_name!=null and rose_name!=''">
+                or rose_sale like concat(concat('%',#{rose_name}),'%')
+            </if>
+        </trim>
+        order by rose_id desc
         limit #{page},#{limit}
     </select>
 
     <!--添加鲜花-->
     <insert id="insert" parameterType="Rose">
-      insert into rose(rose_code,rose_name,rose_content,rose_price,rose_reason,rose_composition,rose_story,rose_explain,rose_stock,rose_sale)
-      values (#{rose_code},#{rose_name},#{rose_content},#{rose_price},#{rose_reason},#{rose_composition},#{rose_story},#{rose_explain},#{rose_stock},#{rose_sale})
+      insert into rose(rose_code,rose_name,rose_content,rose_price,rose_reason,rose_composition,rose_story,rose_explain,rose_stock,rose_sale,rose_smallPirture)
+      values (#{rose_code},#{rose_name},#{rose_content},#{rose_price},#{rose_reason},#{rose_composition},#{rose_story},#{rose_explain},#{rose_stock},#{rose_sale},#{rose_smallPirture})
     </insert>
 
     <!--修改鲜花-->
@@ -69,6 +66,9 @@
           </if>
           <if test="rose_sale!=null and rose_sale!=''">
               rose_sale=#{rose_sale},
+          </if>
+          <if test="rose_smallPirture!=null and rose_smallPirture!=''">
+              rose_smallPirture=#{rose_smallPirture},
           </if>
       </set>
       where rose_id=#{rose_id}

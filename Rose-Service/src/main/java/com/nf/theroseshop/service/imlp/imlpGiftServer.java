@@ -13,8 +13,12 @@ public class imlpGiftServer implements GiftServer {
     @Autowired
     GiftDao giftDao;
 
-    public List<Gift> getAll(String gift_name, Double gift_price, int page, int limit) {
-        return giftDao.getAll(gift_name,gift_price,page,limit);
+    public List<Gift> flowerAllData(Gift gift) {
+        return giftDao.flowerAllData(gift);
+    }
+
+    public List<Gift> getAll(String gift_name, Double gift_price,Integer gift_stock, Integer gift_sale,int page, int limit) {
+        return giftDao.getAll(gift_name,gift_price,gift_stock,gift_sale,page,limit);
     }
 
     public int insert(Gift gift) {
@@ -31,6 +35,7 @@ public class imlpGiftServer implements GiftServer {
         gift1.setGift_stock(gift.getGift_stock());
         gift1.setGift_sale(gift.getGift_sale());
         gift1.setGift_supplier(gift.getGift_supplier());
+        gift1.setGift_smallPirture(gift.getGift_smallPirture());
         return giftDao.insert(gift1);
     }
 
@@ -49,6 +54,7 @@ public class imlpGiftServer implements GiftServer {
         gift1.setGift_stock(gift.getGift_stock());
         gift1.setGift_sale(gift.getGift_sale());
         gift1.setGift_supplier(gift.getGift_supplier());
+        gift1.setGift_smallPirture(gift.getGift_smallPirture());
         return giftDao.updata(gift1);
     }
 

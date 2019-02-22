@@ -2,40 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--命名空间应该是对应接口的包名+接口名 -->
 <mapper namespace="com.nf.theroseshop.dao.ImmortalDao">
+    <!--查看全部的数据-->
+    <select id="flowerAllData" resultType="Immortal">
+        select * from immortal
+    </select>
     <!--永生花模糊查询和分页-->
     <select id="getAll" resultType="Immortal">
-        SELECT
-        immortal.immortal_id,
-        immortal.immortal_code,
-        immortal.immortal_name,
-        immortal.immortal_content,
-        immortal.immortal_price,
-        immortal.immortal_reason,
-        immortal.immortal_composition,
-        immortal.immortal_story,
-        immortal.immortal_explain,
-        immortal.immortal_stock,
-        immortal.immortal_sale,
-        supplierinfo.Supplier_id
-        FROM
-        immortal
-        INNER JOIN supplierinfo ON immortal.immortal_supplier = supplierinfo.Supplier_id
-        <where>
+        SELECT * FROM immortal
+        <trim prefix="where" prefixOverrides="and|or">
             <if test="immortal_name!=null and immortal_name!=''">
                 or immortal_name like concat(concat('%',#{immortal_name}),'%')
             </if>
-            <if test="immortal_price!=null and immortal_price!=''">
-                or immortal_price like concat(concat('%',#{immortal_price}),'%')
+            <if test="immortal_name!=null and immortal_name!=''">
+                or immortal_price like concat(concat('%',#{immortal_name}),'%')
             </if>
-        </where>
-        order by immortal.immortal_id asc
+            <if test="immortal_name!=null and immortal_name!=''">
+                or immortal_stock like concat(concat('%',#{immortal_name}),'%')
+            </if>
+            <if test="immortal_name!=null and immortal_name!=''">
+                or immortal_sale like concat(concat('%',#{immortal_name}),'%')
+            </if>
+        </trim>
+        order by immortal_id desc
         limit #{page},#{limit}
     </select>
 
     <!--添加永生花-->
     <insert id="insert" parameterType="Immortal">
-      insert into immortal(immortal_code,immortal_name,immortal_content,immortal_price,immortal_reason,immortal_composition,immortal_story,immortal_explain,immortal_stock,immortal_sale,immortal_supplier)
-      values (#{immortal_code},#{immortal_name},#{immortal_content},#{immortal_price},#{immortal_reason},#{immortal_composition},#{immortal_story},#{immortal_explain},#{immortal_stock},#{immortal_sale},#{immortal_supplier})
+      insert into immortal(immortal_code,immortal_name,immortal_content,immortal_price,immortal_reason,immortal_composition,immortal_story,immortal_explain,immortal_stock,immortal_sale,immortal_supplier,immortal_smallPirture)
+      values (#{immortal_code},#{immortal_name},#{immortal_content},#{immortal_price},#{immortal_reason},#{immortal_composition},#{immortal_story},#{immortal_explain},#{immortal_stock},#{immortal_sale},#{immortal_supplier},#{immortal_smallPirture})
     </insert>
 
     <!--修改永生花-->
@@ -74,6 +69,9 @@
           </if>
           <if test="immortal_supplier!=null and immortal_supplier!=''">
               immortal_supplier=#{immortal_supplier}
+          </if>
+          <if test="immortal_smallPirture!=null and immortal_smallPirture!=''">
+              immortal_smallPirture=#{immortal_smallPirture}
           </if>
       </set>
       where immortal_id=#{immortal_id}

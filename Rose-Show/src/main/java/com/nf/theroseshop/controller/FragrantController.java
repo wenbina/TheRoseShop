@@ -6,6 +6,7 @@ import com.nf.theroseshop.service.imlp.imlpFragrantServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,11 +19,19 @@ public class FragrantController {
     @Autowired
     imlpFragrantServer fragrantServer;
 
+    //查看全部的数据
+    @RequestMapping("FragranFlowerAllData")
+    @ResponseBody
+    public R FragranflowerAllData(Fragrant fragrant){
+        List<Fragrant> list=fragrantServer.flowerAllData(fragrant);
+        return R.ok(list);
+    }
+
     //香薰分页查询和模糊查
     @RequestMapping("FragrantGetAll")
     @ResponseBody
-    public R FragrantGetAll(String Fragrant_name,Double Fragrant_price,int page,int limit){
-        List<Fragrant> list=fragrantServer.getAll(Fragrant_name,Fragrant_price,((page-1)*limit),limit);
+    public R FragrantGetAll(String Fragrant_name, Double Fragrant_price, Integer Fragrant_Stock, Integer Fragrant_sale, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int limit){
+        List<Fragrant> list=fragrantServer.getAll(Fragrant_name,Fragrant_price,Fragrant_Stock,Fragrant_sale,((page-1)*limit),limit);
         return R.ok(list);
     }
 

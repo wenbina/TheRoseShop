@@ -33,16 +33,16 @@ public class ImmortalDaoTest {
 
     @Test
     public void getAll() {
-        List<Immortal> list=immortalDao.getAll("",520.0,1,10);
+        List<Immortal> list=immortalDao.getAll("",null,null,null,1,10);
         System.out.println(list);
     }
 
     @Test
     public void insert() {
         Immortal immortal=new Immortal();
-        immortal.setImmortal_code("33");
+        immortal.setImmortal_code("34");
         immortal.setImmortal_name("爱你一辈子");
-        immortal.setImmortal_content("123.jpg");
+        immortal.setImmortal_content("");
         immortal.setImmortal_price(1314);
         immortal.setImmortal_reason("我爱你一辈子，守护你一辈子！");
         immortal.setImmortal_composition("直径12.5cm x 高14cm");
@@ -51,6 +51,7 @@ public class ImmortalDaoTest {
         immortal.setImmortal_stock(100);
         immortal.setImmortal_sale(99);
         immortal.setImmortal_supplier(10000);
+        immortal.setImmortal_smallPirture("123.jpg");
         int insert=immortalDao.insert(immortal);
         System.out.println(insert);
     }
@@ -58,10 +59,10 @@ public class ImmortalDaoTest {
     @Test
     public void updata() {
         Immortal immortal=new Immortal();
-        immortal.setImmortal_id(32);
-        immortal.setImmortal_code("32");
-        immortal.setImmortal_name("我爱你");
-        immortal.setImmortal_content("520.jpg");
+        immortal.setImmortal_id(34);
+        immortal.setImmortal_code("34");
+        immortal.setImmortal_name("我爱死你了");
+        immortal.setImmortal_content("5201314.jpg");
         immortal.setImmortal_price(1314);
         immortal.setImmortal_reason("我爱你一辈子，守护你一辈子！");
         immortal.setImmortal_composition("直径12.5cm x 高14cm");
@@ -70,6 +71,7 @@ public class ImmortalDaoTest {
         immortal.setImmortal_stock(100);
         immortal.setImmortal_sale(99);
         immortal.setImmortal_supplier(10000);
+        immortal.setImmortal_smallPirture("123.jpg");
         int updata=immortalDao.updata(immortal);
         System.out.println(updata);
     }

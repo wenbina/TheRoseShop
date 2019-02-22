@@ -6,8 +6,10 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface   ImmortalDao {
+    //查看全部的数据
+    List<Immortal> flowerAllData(Immortal immortal);
     //永生花分页查询和模糊查
-    List<Immortal> getAll(@Param("immortal_name") String immortal_name,@Param("immortal_price") Double immortal_price,@Param("page") int page,@Param("limit") int limit);
+    List<Immortal> getAll(@Param("immortal_name") String immortal_name, @Param("immortal_price") Double immortal_price,@Param("immortal_stock") Integer immortal_stock,@Param("immortal_sale") Integer immortal_sale ,@Param("page") int page,@Param("limit") int limit);
     //添加永生花
     int insert(Immortal immortal);
     //修改永生花

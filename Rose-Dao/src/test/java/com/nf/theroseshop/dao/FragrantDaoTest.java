@@ -29,7 +29,7 @@ public class FragrantDaoTest {
 
     @Test
     public void getAll() {
-        List<Fragrant> getAll=fragrantDao.getAll("",1.0,1,10);
+        List<Fragrant> getAll=fragrantDao.getAll("上海",null,null,null,1,10);
         System.out.println(getAll);
     }
 
