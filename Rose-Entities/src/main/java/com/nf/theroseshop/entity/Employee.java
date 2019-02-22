@@ -11,7 +11,7 @@ public class Employee implements Serializable {
   private String employeeName;
   private String employeeTx;
   private String employeeCode;
-  private Date employeeDate;
+  private String employeeDate;
   private long employeeWorktype;
   private String employeeNumber;
   private String employeePwd;
@@ -51,11 +51,11 @@ public class Employee implements Serializable {
     this.employeeCode = employeeCode;
   }
 
-  public Date getEmployeeDate() {
+  public String getEmployeeDate() {
     return employeeDate;
   }
 
-  public void setEmployeeDate(Date employeeDate) {
+  public void setEmployeeDate(String employeeDate) {
     this.employeeDate = employeeDate;
   }
 
@@ -102,7 +102,7 @@ public class Employee implements Serializable {
   public Employee() {
   }
 
-  public Employee(long employeeId, String employeeName, String employeeTx, String employeeCode, Date employeeDate, long employeeWorktype, String employeeNumber, String employeePwd, long employeeState, Employeetype employeetype) {
+  public Employee(long employeeId, String employeeName, String employeeTx, String employeeCode, String employeeDate, long employeeWorktype, String employeeNumber, String employeePwd, long employeeState, Employeetype employeetype) {
     this.employeeId = employeeId;
     this.employeeName = employeeName;
     this.employeeTx = employeeTx;

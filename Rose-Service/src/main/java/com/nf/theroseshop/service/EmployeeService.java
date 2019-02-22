@@ -13,6 +13,13 @@ public interface EmployeeService {
     public NoteResult checkLogin(String employeeNumber, String employeePwd) throws NoSuchAlgorithmException;
 
 
+    Employee selectbyemployeeNumber(String employeeNumber);
+
+//修改状态
+    boolean updateEmployeeState(String employeeId,String employeeState);
+
+
+
 //  查询所有
     List<Employee> selectemployeeAll(String employeeNumber,String employeeName, String employeeTypeName);
 

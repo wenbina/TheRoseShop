@@ -42,6 +42,18 @@ public class EmployeeServiceImpl implements EmployeeService {
         return  result;
     }
 
+    public Employee selectbyemployeeNumber(String employeeNumber) {
+        if (StringUtils.isEmpty(employeeNumber)){
+            employeeNumber=null;
+        }
+        Employee employee=employeeDao.selectbyemployeeNumber(employeeNumber);
+        return employee;
+    }
+
+    public boolean updateEmployeeState(String employeeId, String employeeState) {
+        return employeeDao.updateEmployeeState(employeeId,employeeState);
+    }
+
     //    查询所有
     public List<Employee> selectemployeeAll(String employee_number, String employee_name, String employeeType_name) {
         List<Employee> list=employeeDao.selectemployeeAll(employee_number,employee_name,employeeType_name);
@@ -97,7 +109,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
 //    分页查询
-    public List<Employee> getEmployeePager(int pageNO, int size, String employeeNumber,String employeeName, String employeeTypeName) {
+    public List<Employee> getEmployeePager(int skip, int size, String employeeNumber,String employeeName, String employeeTypeName) {
         if (StringUtils.isEmpty(employeeNumber)){
             employeeNumber=null;
         }
@@ -107,7 +119,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (StringUtils.isEmpty(employeeTypeName)){
             employeeTypeName=null;
         }
-        int skip=(pageNO-1)*size;
+//        int skip=(pageNO-1)*size;
         return employeeDao.getEmployeePager(skip,size,employeeNumber,employeeName,employeeTypeName);
     }
 

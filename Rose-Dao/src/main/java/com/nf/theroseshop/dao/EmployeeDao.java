@@ -28,6 +28,9 @@ public interface EmployeeDao {
                            @Param("employeeWorktype")String employeeWorktype,@Param("employeeState")String employeeState,
                            @Param("employeeDate")String employeeDate);
 
+    boolean updateEmployeeState(@Param("employeeId") String employeeId,@Param("employeeState")String employeeState);
+
+
     boolean deletebyId(int id);
 
     boolean deleteEmployeebyList(List<Integer> ids);

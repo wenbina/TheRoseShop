@@ -42,11 +42,22 @@
 
 
     <!--查询所有-->
-    <select id="selectbyemployeeNumber" resultType="com.nf.theroseshop.entity.Employee">
-        select *
-        from employee
+    <select id="selectbyemployeeNumber" resultMap="employee_selectNumber" parameterType="map">
+        select employee_id,employee_number,employee_pwd,employee_name,
+        employee_tx,employee_code,employee_date,employee_state,employee_worktype from employee
         where employee_number=#{employeeNumber}
     </select>
+    <resultMap id="employee_selectNumber" type="employee">
+        <id property="employeeId" column="employee_id"></id>
+        <result property="employeeName" column="employee_name"></result>
+        <result property="employeeTx" column="employee_tx"></result>
+        <result property="employeeCode" column="employee_code"></result>
+        <result property="employeeDate" column="employee_date"></result>
+        <result property="employeeWorktype" column="employee_worktype"></result>
+        <result property="employeeNumber" column="employee_number"></result>
+        <result property="employeePwd" column="employee_pwd"></result>
+        <result property="employeeState" column="employee_state"></result>
+    </resultMap>
 
 
 
@@ -89,6 +100,19 @@
         <!--</set>-->
         where employee_id=#{employeeId}
     </update>
+
+
+
+    <!--修改-->
+    <update id="updateEmployeeState" parameterType="string">
+        update employee set employee_state =#{employeeState}
+        where employee_id=#{employeeId}
+    </update>
+
+
+
+
+
 
     <!--删除-->
     <delete id="deletebyId">

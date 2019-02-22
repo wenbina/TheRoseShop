@@ -96,6 +96,16 @@ public class EmployeeDaoTest {
     }
 
 
+    @Test
+    public void updateemployeeState(){
+
+        System.out.println(employeeDao.updateEmployeeState("18","0"));
+
+
+
+    }
+
+
 
 
 }
