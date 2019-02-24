@@ -14,11 +14,12 @@ public class Rose {
   private String rose_explain;
   private int rose_stock;
   private int immortal_sale;
+  private String rose_smallPirture;
 
   public Rose() {
   }
 
-  public Rose(int rose_id, String rose_code, String rose_name, String rose_content, double rose_price, String rose_reason, String rose_composition, String rose_story, String rose_explain, int rose_stock, int immortal_sale) {
+  public Rose(int rose_id, String rose_code, String rose_name, String rose_content, double rose_price, String rose_reason, String rose_composition, String rose_story, String rose_explain, int rose_stock, int immortal_sale, String rose_smallPirture) {
     this.rose_id = rose_id;
     this.rose_code = rose_code;
     this.rose_name = rose_name;
@@ -30,6 +31,7 @@ public class Rose {
     this.rose_explain = rose_explain;
     this.rose_stock = rose_stock;
     this.immortal_sale = immortal_sale;
+    this.rose_smallPirture = rose_smallPirture;
   }
 
   @Override
@@ -46,6 +48,7 @@ public class Rose {
             ", rose_explain='" + rose_explain + '\'' +
             ", rose_stock=" + rose_stock +
             ", immortal_sale=" + immortal_sale +
+            ", rose_smallPirture='" + rose_smallPirture + '\'' +
             '}';
   }
 
@@ -135,5 +138,13 @@ public class Rose {
 
   public void setImmortal_sale(int immortal_sale) {
     this.immortal_sale = immortal_sale;
+  }
+
+  public String getRose_smallPirture() {
+    return rose_smallPirture;
+  }
+
+  public void setRose_smallPirture(String rose_smallPirture) {
+    this.rose_smallPirture = rose_smallPirture;
   }
 }

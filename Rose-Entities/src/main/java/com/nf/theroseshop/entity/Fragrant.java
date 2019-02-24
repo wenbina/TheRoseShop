@@ -14,11 +14,12 @@ public class Fragrant {
     private  int Fragrant_Stock;
     private  int Fragrant_sale;
     private  int Fragrant_supplier;
+    private String Fragrant_smallPirture ;
 
     public Fragrant() {
     }
 
-    public Fragrant(int fragrant_id, String fragrant_code, int fragrant_type, String fragrant_name, String fragrant_content, double fragrant_price, String fragrant_reason, String fragrant_composition, String fragrant_story, String fragrant_explain, int fragrant_Stock, int fragrant_sale, int fragrant_supplier) {
+    public Fragrant(int fragrant_id, String fragrant_code, int fragrant_type, String fragrant_name, String fragrant_content, double fragrant_price, String fragrant_reason, String fragrant_composition, String fragrant_story, String fragrant_explain, int fragrant_Stock, int fragrant_sale, int fragrant_supplier, String fragrant_smallPirture) {
         Fragrant_id = fragrant_id;
         Fragrant_code = fragrant_code;
         Fragrant_type = fragrant_type;
@@ -32,6 +33,27 @@ public class Fragrant {
         Fragrant_Stock = fragrant_Stock;
         Fragrant_sale = fragrant_sale;
         Fragrant_supplier = fragrant_supplier;
+        Fragrant_smallPirture = fragrant_smallPirture;
+    }
+
+    @Override
+    public String toString() {
+        return "Fragrant{" +
+                "Fragrant_id=" + Fragrant_id +
+                ", Fragrant_code='" + Fragrant_code + '\'' +
+                ", Fragrant_type=" + Fragrant_type +
+                ", Fragrant_name='" + Fragrant_name + '\'' +
+                ", Fragrant_content='" + Fragrant_content + '\'' +
+                ", Fragrant_price=" + Fragrant_price +
+                ", Fragrant_reason='" + Fragrant_reason + '\'' +
+                ", Fragrant_composition='" + Fragrant_composition + '\'' +
+                ", Fragrant_story='" + Fragrant_story + '\'' +
+                ", Fragrant_explain='" + Fragrant_explain + '\'' +
+                ", Fragrant_Stock=" + Fragrant_Stock +
+                ", Fragrant_sale=" + Fragrant_sale +
+                ", Fragrant_supplier=" + Fragrant_supplier +
+                ", Fragrant_smallPirture='" + Fragrant_smallPirture + '\'' +
+                '}';
     }
 
     public int getFragrant_id() {
@@ -138,26 +160,13 @@ public class Fragrant {
         Fragrant_supplier = fragrant_supplier;
     }
 
-    @Override
-    public String toString() {
-        return "Fragrant{" +
-                "Fragrant_id=" + Fragrant_id +
-                ", Fragrant_code='" + Fragrant_code + '\'' +
-                ", Fragrant_type=" + Fragrant_type +
-                ", Fragrant_name='" + Fragrant_name + '\'' +
-                ", Fragrant_content='" + Fragrant_content + '\'' +
-                ", Fragrant_price=" + Fragrant_price +
-                ", Fragrant_reason='" + Fragrant_reason + '\'' +
-                ", Fragrant_composition='" + Fragrant_composition + '\'' +
-                ", Fragrant_story='" + Fragrant_story + '\'' +
-                ", Fragrant_explain='" + Fragrant_explain + '\'' +
-                ", Fragrant_Stock=" + Fragrant_Stock +
-                ", Fragrant_sale=" + Fragrant_sale +
-                ", Fragrant_supplier=" + Fragrant_supplier +
-                '}';
+    public String getFragrant_smallPirture() {
+        return Fragrant_smallPirture;
     }
 
-
+    public void setFragrant_smallPirture(String fragrant_smallPirture) {
+        Fragrant_smallPirture = fragrant_smallPirture;
+    }
 }
 
 

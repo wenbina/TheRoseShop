@@ -2,41 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--命名空间应该是对应接口的包名+接口名 -->
 <mapper namespace="com.nf.theroseshop.dao.GiftDao">
+    <!--查看全部的数据-->
+    <select id="flowerAllData" resultType="Gift">
+        select * from gift
+    </select>
     <!--礼物模糊查询和分页-->
     <select id="getAll" resultType="Gift">
-        SELECT
-        gift.gift_id,
-        gift.gift_code,
-        gift.gift_name,
-        gift.gift_content,
-        gift.gift_price,
-        gift.gift_reason,
-        gift.gift_composition,
-        gift.gift_story,
-        gift.gift_explain,
-        gift.gift_stock,
-        gift.gift_sale,
-        gift.gift_supplier,
-        gifttype.giftType_id
-        FROM
-        gift
-        INNER JOIN gifttype ON gift.gift_type = gifttype.giftType_id
-        <where>
+        SELECT * FROM gift
+        <trim prefix="where" prefixOverrides="and|or">
             <if test="gift_name!=null and gift_name!=''">
                 or gift_name like concat(concat('%',#{gift_name}),'%')
             </if>
-            <if test="gift_price!=null and gift_price!=''">
-                or gift_price like concat(concat('%',#{gift_price}),'%')
+            <if test="gift_name!=null and gift_name!=''">
+                or gift_price like concat(concat('%',#{gift_name}),'%')
             </if>
-        </where>
-        order by gift.gift_id asc
+            <if test="gift_name!=null and gift_name!=''">
+                or gift_stock like concat(concat('%',#{gift_name}),'%')
+            </if>
+            <if test="gift_name!=null and gift_name!=''">
+                or gift_sale like concat(concat('%',#{gift_name}),'%')
+            </if>
+        </trim>
+        order by gift_id desc
         limit #{page},#{limit}
     </select>
 
     <!--添加礼物-->
     <insert id="insert" parameterType="Gift">
-      insert into gift(gift_code,gift_name,gift_content,gift_price,gift_reason,gift_composition,gift_story,gift_explain,gift_stock,gift_sale,gift_supplier,gift_type)
-      values (#{gift_code},#{gift_name},#{gift_content},#{gift_price},#{gift_reason},#{gift_composition},#{gift_story},#{gift_explain},#{gift_stock},#{gift_sale},#{gift_supplier},#{gift_type})
+      insert into gift(gift_code,gift_name,gift_content,gift_price,gift_reason,gift_composition,gift_story,gift_explain,gift_stock,gift_sale,gift_supplier,gift_type,gift_smallPirture)
+      values (#{gift_code},#{gift_name},#{gift_content},#{gift_price},#{gift_reason},#{gift_composition},#{gift_story},#{gift_explain},#{gift_stock},#{gift_sale},#{gift_supplier},#{gift_type},#{gift_smallPirture})
     </insert>
 
     <!--修改礼物-->
@@ -78,6 +72,9 @@
           </if>
           <if test="gift_type!=null and gift_type!=''">
               gift_type=#{gift_type}
+          </if>
+          <if test="gift_smallPirture!=null and gift_smallPirture!=''">
+              gift_smallPirture=#{gift_smallPirture}
           </if>
       </set>
       where gift_id=#{gift_id}

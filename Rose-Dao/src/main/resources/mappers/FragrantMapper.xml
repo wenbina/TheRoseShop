@@ -2,42 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--命名空间应该是对应接口的包名+接口名 -->
 <mapper namespace="com.nf.theroseshop.dao.FragrantDao">
+    <!--查看全部的数据-->
+    <select id="flowerAllData" resultType="Fragrant">
+        select * from fragrant
+    </select>
     <!--香薰模糊查询和分页-->
     <select id="getAll" resultType="Fragrant">
-        SELECT
-        fragrant.Fragrant_id,
-        fragrant.Fragrant_code,
-        fragrant.Fragrant_name,
-        fragrant.Fragrant_content,
-        fragrant.Fragrant_price,
-        fragrant.Fragrant_reason,
-        fragrant.Fragrant_composition,
-        fragrant.Fragrant_story,
-        fragrant.Fragrant_explain,
-        fragrant.Fragrant_Stock,
-        fragrant.Fragrant_sale,
-        fragranttype.FragrantType_id,
-        supplierinfo.Supplier_id
-        FROM
-        fragrant
-        INNER JOIN fragranttype ON fragrant.Fragrant_type = fragranttype.FragrantType_id
-        INNER JOIN supplierinfo ON fragrant.Fragrant_supplier = supplierinfo.Supplier_id
-        <where>
+        SELECT *  FROM fragrant
+        <trim prefix="where" prefixOverrides="and|or">
             <if test="Fragrant_name!=null and Fragrant_name!=''">
                 or Fragrant_name like concat(concat('%',#{Fragrant_name}),'%')
             </if>
-            <if test="Fragrant_price!=null and Fragrant_price!=''">
-                or Fragrant_price like concat(concat('%',#{Fragrant_price}),'%')
+            <if test="Fragrant_name!=null and Fragrant_name!=''">
+                or Fragrant_price like concat(concat('%',#{Fragrant_name}),'%')
             </if>
-        </where>
-        order by fragrant.Fragrant_id asc
+            <if test="Fragrant_name!=null and Fragrant_name!=''">
+                or Fragrant_Stock like concat(concat('%',#{Fragrant_name}),'%')
+            </if>
+            <if test="Fragrant_name!=null and Fragrant_name!=''">
+                or Fragrant_sale like concat(concat('%',#{Fragrant_name}),'%')
+            </if>
+        </trim>
+        order by Fragrant_id desc
         limit #{page},#{limit}
     </select>
 
     <!--添加香薰-->
     <insert id="insert" parameterType="Fragrant">
-      insert into fragrant(Fragrant_code,Fragrant_name,Fragrant_content,Fragrant_price,Fragrant_reason,Fragrant_composition,Fragrant_story,Fragrant_explain,Fragrant_Stock,Fragrant_sale,Fragrant_supplier,Fragrant_type)
-      values (#{Fragrant_code},#{Fragrant_name},#{Fragrant_content},#{Fragrant_price},#{Fragrant_reason},#{Fragrant_composition},#{Fragrant_story},#{Fragrant_explain},#{Fragrant_Stock},#{Fragrant_sale},#{Fragrant_supplier},#{Fragrant_type})
+      insert into fragrant(Fragrant_code,Fragrant_name,Fragrant_content,Fragrant_price,Fragrant_reason,Fragrant_composition,Fragrant_story,Fragrant_explain,Fragrant_Stock,Fragrant_sale,Fragrant_supplier,Fragrant_type,Fragrant_smallPirture)
+      values (#{Fragrant_code},#{Fragrant_name},#{Fragrant_content},#{Fragrant_price},#{Fragrant_reason},#{Fragrant_composition},#{Fragrant_story},#{Fragrant_explain},#{Fragrant_Stock},#{Fragrant_sale},#{Fragrant_supplier},#{Fragrant_type},#{Fragrant_smallPirture})
     </insert>
 
     <!--修改香薰-->
@@ -79,6 +72,9 @@
           </if>
           <if test="Fragrant_type!=null and Fragrant_type!=''">
               Fragrant_type=#{Fragrant_type}
+          </if>
+          <if test="Fragrant_smallPirture!=null and Fragrant_smallPirture!=''">
+              Fragrant_smallPirture=#{Fragrant_smallPirture}
           </if>
       </set>
       where Fragrant_id=#{Fragrant_id}

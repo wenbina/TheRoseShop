@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="theroseshop@localhost" uuid="895d9939-5130-4cfb-8073-8d8e8c277887">
+    <data-source source="LOCAL" name="theroseshop" uuid="a9dc60d5-8f31-4520-a297-1b4556149ca5">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
+      <remarks>花宫坊商城</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/theroseshop</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:5201/theroseshop</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
@@ -15,10 +16,10 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="theroseshop" uuid="a9dc60d5-8f31-4520-a297-1b4556149ca5">
+    <data-source source="LOCAL" name="theroseshop" uuid="306085f7-9a20-4ecf-a5c1-d901b6276ccb">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
-      <remarks>花宫坊商城</remarks>
+      <remarks>花宫坊</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:5201/theroseshop</jdbc-url>
       <driver-properties>

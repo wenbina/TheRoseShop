@@ -16,12 +16,11 @@
             }
 		</style>
 	</head>
-
 	<body>
 		<div class="roseMain">
 			<!--头部-->
 			<div class="roseTitle">
-				<div class="roseLogin">欢迎来到 THE BEAST 野兽派！<a href="/reception/brutalism_login">登录</a> <a href="/reception/brutalism_register">注册</a></div>
+				<div class="roseLogin">欢迎来到 BEST ROSE 花宫坊！<a href="/reception/brutalism_login">登录</a> <a href="/reception/brutalism_register">注册</a></div>
 				<div class="roseLogo">
 					<a href="/reception/index"><div class="roseLogo_box"></div></a>
 				</div>
@@ -79,7 +78,7 @@
                     </a>
                 </li>
                 <li class="menuA8">
-                    <a href="index.html">
+                    <a href="/reception/fragrantShow">
                         Fragrance<br/>
                         香氛
                     </a>
@@ -97,7 +96,7 @@
                     </a>
                 </li>
                 <li class="menuA11">
-                    <a href="index.html">
+                    <a href="/reception/giftShow">
                         Gifts<br/>
                         礼物
                     </a>
@@ -160,44 +159,39 @@
 			</div>
 			<!--商品信息-->
 			<div id="product_list" class="center">
-				<div class="block_product left product" v-for="(item,index) in product">
-					<a href="/reception/detailed" title="“梦里数钱”新年开运礼盒" target="_blank">
-						<img class="lazy" v-bind:src="'../../../brutalism/brutalismFrontImg/goodsImg/flower/longBox/'+item.picture" alt="“梦里数钱”新年开运礼盒" width="300" height="313"></a>
-					<h2 class="product-name clearfix">
-						<a href="#" title="“梦里数钱”新年开运礼盒" target="_blank">
-							<span>{{item.beast}}</span>
-							<span class="name">{{item.name}}</span>
-							<span style="color:#b4b4b4">{{item.speech}}</span>
-							<span class="price">{{item.price}}</span>
-						</a>
-					</h2>
+				<div id="product_listRose" class="center" style="margin: 10px">
+					<!--鲜花-->
+					<div style="text-align: center;margin-bottom: 20px;margin-left: -20px"><img src="../../../brutalism/brutalismFrontImg/globalImg/flowerTitle.png" height="61" width="940"/></div>
+					<div class="block_product left product" v-for="(item,index) in rose">
+						<a href="/reception/detailed" v-bind:title="item.rose_name" target="_blank">
+							<img class="lazy" v-bind:src="'../../../brutalism/brutalismFrontImg/goodsImg/flower/longBox/'+item.rose_smallPirture" alt="“梦里数钱”新年开运礼盒" width="300" height="313"></a>
+						<h2 class="product-name clearfix">
+							<a href="#" v-bind:title="item.rose_name" target="_blank">
+								<span>{{item.beast}}</span>
+								<span class="name">{{item.rose_name}}</span>
+								<span style="color:#b4b4b4">{{item.rose_composition}}</span>
+								<span class="price">{{item.rose_price}}元</span>
+							</a>
+						</h2>
+					</div>
 				</div>
-				<!--<div class="block_product left">
-					<a href="#" title="“梦里数钱”新年开运礼盒" target="_blank">
-						<img class="lazy" src="../../../brutalism/img/Floriculture01.jpg" alt="“梦里数钱”新年开运礼盒" width="300" height="313"></a>
-					<h2 class="product-name clearfix">
-						<a href="#" title="“梦里数钱”新年开运礼盒" target="_blank">
-							<span>THE BEAST</span>
-							<span class="name">“梦里数钱”新年开运礼盒</span>
-							<span style="color:#b4b4b4"></span>
-							<span class="price">¥338.00</span>
-						</a>
-					</h2>
+				<!--永生花-->
+
+				<div id="likeFlower" style="text-align: center;margin-bottom: 20px"><img src="../../../brutalism/brutalismFrontImg/globalImg/preservedFreshFlowerTitle.png" height="61" width="940"/></div>
+				<div id="product_listFlower" class="center" style="display: none">
+					<div class="block_product left product" v-for="(item,index) in immortal">
+						<a href="/reception/detailed" v-bind:title="item.immortal_name" target="_blank">
+							<img class="lazy" v-bind:src="'../../../brutalism/brutalismFrontImg/goodsImg/preservedFreshFlower/'+item.immortal_smallPirture" alt="“梦里数钱”新年开运礼盒" width="300" height="313"></a>
+						<h2 class="product-name clearfix">
+							<a href="#" v-bind:title="item.immortal_name" target="_blank">
+								<span>{{item.beast}}</span>
+								<span class="name">{{item.immortal_name}}</span>
+								<span style="color:#b4b4b4">{{item.immortal_composition}}</span>
+								<span class="price">￥{{item.immortal_price}}元</span>
+							</a>
+						</h2>
+					</div>
 				</div>
-				<div class="block_product left">
-					<a href="#" title="“梦里数钱”新年开运礼盒" target="_blank">
-						<img class="lazy" src="img/Floriculture01.jpg" alt="“梦里数钱”新年开运礼盒" width="300" height="313"></a>
-					<h2 class="product-name clearfix">
-						<a href="#" title="“梦里数钱”新年开运礼盒" target="_blank">
-							<span>THE BEAST</span>
-							<span class="name">“梦里数钱”新年开运礼盒</span>
-							<span style="color:#b4b4b4"></span>
-							<span class="price">¥338.00</span>
-						</a>
-					</h2>
-				</div>-->
-				<!--循环-->
-				
 			</div>
 			<!--主页--底部-->
 			<div class="rose_foot">
@@ -286,97 +280,48 @@
 		</div>
 	</body>
 </html>
+
 <script type="text/javascript" src="../../../brutalism/js/jquery-1.11.3.js" ></script>
 <script type="text/javascript" src="../../../brutalism/js/vue.min.js" ></script>
 <script type="text/javascript">
 	var vm=new Vue({
 		el:"#product_list",
 		data:{
-			product:[{
-				picture:"flower1.jpg",
-				beast:"THE BEAST",
-				name:"亚克力星空枪炮花盒-淑女杀手（20支）",
-				speech:"易烊千玺同款花盒",
-				price:"¥2880.00"
-			},{
-				picture:"flower2.jpg",
-				beast:"THE BEAST",
-				name:"玫瑰多重奏-爱在每一天（16支）",
-				speech:"",
-				price:"¥1520.00"
-			},{
-				picture:"flower3.jpg",
-				beast:"THE BEAST",
-				name:"弗洛伊德（16支）",
-				speech:"经典玫红色枪炮玫瑰",
-				price:"¥1314.00"
-			},{
-				picture:"flower4.jpg",
-				beast:"THE BEAST",
-				name:"玫瑰二重奏-爱在黎明（16支）",
-				speech:"限量款拼色玫瑰",
-				price:"¥1314.00"
-			},{
-				picture:"flower5.jpg",
-				beast:"THE BEAST",
-				name:"玫瑰多重奏-爱在每一天（16支）",
-				speech:"",
-				price:"¥1520.00"
-			},{
-				picture:"flower6.jpg",
-				beast:"THE BEAST",
-				name:"玫瑰二重奏-爱在午夜（16支）",
-				speech:"限量款拼色玫瑰",
-				price:"¥1314.00"
-			},{
-				picture:"flower7.jpg",
-				beast:"THE BEAST",
-				name:"希望（12支）",
-				speech:"稀有粉白渐变枪炮玫瑰",
-				price:"¥990.00"
-			},{
-				picture:"flower8.jpg",
-				beast:"THE BEAST",
-				name:"北极星（12支）",
-				speech:"经典象牙白枪炮玫瑰",
-				price:"¥990.00"
-			},{
-				picture:"flower9.jpg",
-				beast:"THE BEAST",
-				name:"我已爱上你（12支）",
-				speech:"珍贵蓝粉白三色玫瑰",
-				price:"¥990.00"
-			},{
-				picture:"flower10.jpg",
-				beast:"THE BEAST",
-				name:"淑女杀手（12支）",
-				speech:"经典红色枪炮玫瑰",
-				price:"¥990.00"
-			},{
-				picture:"flower11.jpg",
-				beast:"THE BEAST",
-				name:"淑女杀手（16支）",
-				speech:"经典红色枪炮玫瑰",
-				price:"¥1314.00"
-			},{
-				picture:"flower12.jpg",
-				beast:"THE BEAST",
-				name:"弗洛伊德（12支）",
-				speech:"经典玫红色枪炮玫瑰",
-				price:"¥990.00"
-			},{
-				picture:"flower13.jpg",
-				beast:"THE BEAST",
-				name:"我把天空送给你（12支）",
-				speech:"珍贵蓝白双色玫瑰",
-				price:"¥990.00"
-			},{
-				picture:"flower14.jpg",
-				beast:"THE BEAST",
-				name:"“方耳朵熊守护你”淑女杀手枪炮礼盒（16支）",
-				speech:"明星组合俘获她的芳心",
-				price:"¥1520.00"
-			}]
-		}
+            rose:[],
+            immortal:[]
+		},
+        methods:{
+            getUserAll(){
+				var that=this;
+                $.ajax({
+                    url: "http://localhost:8080/Rose/RoseFlowerAllData",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    type: "get",
+                    success: function (data) {
+                        that.rose = data.data;
+                        console.log(data.data);
+                    }
+                });
+                $.ajax({
+                    url: "http://localhost:8080/Immortal/ImmortalFlowerAllData",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    type: "get",
+                    success: function (data) {
+                        that.immortal = data.data;
+                        console.log(data.data);
+                    }
+                });
+			}
+		},
+        mounted() {
+            this.getUserAll();
+        }
 	});
+	$("body").on("click","#likeFlower",function () {
+	    $("#product_listFlower").css("display","block");
+    })
+
+
 </script>

@@ -6,8 +6,10 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface GiftServer {
+    //查看全部的数据
+    List<Gift> flowerAllData(Gift gift);
     //礼物分页查询和模糊查
-    List<Gift> getAll(String gift_name,Double gift_price,int page,int limit);
+    List<Gift> getAll(String gift_name,Double gift_price,Integer gift_stock,Integer gift_sale,int page,int limit);
     //添加礼物
     int insert(Gift gift);
     //修改礼物

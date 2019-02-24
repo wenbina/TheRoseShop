@@ -6,6 +6,7 @@ import com.nf.theroseshop.service.imlp.imlpImmortalServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,11 +19,19 @@ public class ImmortalController {
     @Autowired
     imlpImmortalServer immortalServer;
 
+    //查看全部的数据
+    @RequestMapping("ImmortalFlowerAllData")
+    @ResponseBody
+    public R ImmortalFlowerAllData(Immortal immortal){
+        List<Immortal> list=immortalServer.flowerAllData(immortal);
+        return R.ok(list);
+    }
+
     //永生花分页查询和模糊查
     @RequestMapping("ImmortalGetAll")
     @ResponseBody
-    public R ImmortalGetAll(String immortal_name, Double immortal_price, int page, int limit){
-        List<Immortal> list=immortalServer.getAll(immortal_name,immortal_price,((page-1)*limit),limit);
+    public R ImmortalGetAll(String immortal_name, Double immortal_price, Integer immortal_stock, Integer immortal_sale, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int limit){
+        List<Immortal> list=immortalServer.getAll(immortal_name,immortal_price,immortal_stock,immortal_sale,((page-1)*limit),limit);
         return R.ok(list);
     }
 

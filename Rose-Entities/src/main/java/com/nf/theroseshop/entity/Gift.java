@@ -16,11 +16,12 @@ public class Gift {
   private int gift_stock;
   private int gift_sale;
   private int gift_supplier;
+  private String gift_smallPirture;
 
   public Gift() {
   }
 
-  public Gift(int gift_id, String gift_code, int gift_type, String gift_name, String gift_content, double gift_price, String gift_reason, String gift_composition, String gift_story, String gift_explain, int gift_stock, int gift_sale, int gift_supplier) {
+  public Gift(int gift_id, String gift_code, int gift_type, String gift_name, String gift_content, double gift_price, String gift_reason, String gift_composition, String gift_story, String gift_explain, int gift_stock, int gift_sale, int gift_supplier, String gift_smallPirture) {
     this.gift_id = gift_id;
     this.gift_code = gift_code;
     this.gift_type = gift_type;
@@ -34,6 +35,7 @@ public class Gift {
     this.gift_stock = gift_stock;
     this.gift_sale = gift_sale;
     this.gift_supplier = gift_supplier;
+    this.gift_smallPirture = gift_smallPirture;
   }
 
   @Override
@@ -52,6 +54,7 @@ public class Gift {
             ", gift_stock=" + gift_stock +
             ", gift_sale=" + gift_sale +
             ", gift_supplier=" + gift_supplier +
+            ", gift_smallPirture='" + gift_smallPirture + '\'' +
             '}';
   }
 
@@ -157,5 +160,13 @@ public class Gift {
 
   public void setGift_supplier(int gift_supplier) {
     this.gift_supplier = gift_supplier;
+  }
+
+  public String getGift_smallPirture() {
+    return gift_smallPirture;
+  }
+
+  public void setGift_smallPirture(String gift_smallPirture) {
+    this.gift_smallPirture = gift_smallPirture;
   }
 }

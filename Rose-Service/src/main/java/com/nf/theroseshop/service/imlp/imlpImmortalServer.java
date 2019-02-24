@@ -13,8 +13,12 @@ public class imlpImmortalServer implements ImmortalServer {
     @Autowired
     ImmortalDao immortalDao;
 
-    public List<Immortal> getAll(String immortal_name, Double immortal_price, int page, int limit) {
-        return immortalDao.getAll(immortal_name,immortal_price,page,limit);
+    public List<Immortal> getAll(String immortal_name, Double immortal_price,Integer immortal_stock,Integer immortal_sale,int page, int limit) {
+        return immortalDao.getAll(immortal_name,immortal_price,immortal_stock,immortal_sale,page,limit);
+    }
+
+    public List<Immortal> flowerAllData(Immortal immortal) {
+        return immortalDao.flowerAllData(immortal);
     }
 
     public int insert(Immortal immortal) {
@@ -30,6 +34,7 @@ public class imlpImmortalServer implements ImmortalServer {
         immortal1.setImmortal_stock(immortal.getImmortal_stock());
         immortal1.setImmortal_sale(immortal.getImmortal_sale());
         immortal1.setImmortal_supplier(immortal.getImmortal_supplier());
+        immortal1.setImmortal_smallPirture(immortal.getImmortal_smallPirture());
         return immortalDao.insert(immortal1);
     }
 
@@ -47,6 +52,7 @@ public class imlpImmortalServer implements ImmortalServer {
         immortal1.setImmortal_stock(immortal.getImmortal_stock());
         immortal1.setImmortal_sale(immortal.getImmortal_sale());
         immortal1.setImmortal_supplier(immortal.getImmortal_supplier());
+        immortal1.setImmortal_smallPirture(immortal.getImmortal_smallPirture());
         return immortalDao.updata(immortal1);
     }
 

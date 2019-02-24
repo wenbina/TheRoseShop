@@ -1,6 +1,6 @@
 package com.nf.theroseshop.dao;
 
-import com.nf.theroseshop.entity.Gift;
+import com.nf.theroseshop.entity.Fragrant;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,9 +15,9 @@ import static org.junit.Assert.*;
 
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
-public class GiftDaoTest {
+public class FragrantDaoTest {
     @Autowired
-    GiftDao giftDao;
+    FragrantDao fragrantDao;
 
     @Before
     public void setUp() throws Exception {
@@ -29,7 +29,7 @@ public class GiftDaoTest {
 
     @Test
     public void getAll() {
-        List<Gift> getAll=giftDao.getAll("",1314.0,1,10);
+        List<Fragrant> getAll=fragrantDao.getAll("上海",null,null,null,1,10);
         System.out.println(getAll);
     }
 

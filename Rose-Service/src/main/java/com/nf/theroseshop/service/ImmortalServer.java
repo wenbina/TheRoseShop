@@ -6,8 +6,10 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface ImmortalServer {
+    //查看全部的数据
+    List<Immortal> flowerAllData(Immortal immortal);
     //永生花分页查询和模糊查
-    List<Immortal> getAll(String immortal_name,Double immortal_price,int page,int limit);
+    List<Immortal> getAll(String immortal_name,Double immortal_price,Integer immortal_stock,Integer immortal_sale,int page,int limit);
     //添加永生花
     int insert(Immortal immortal);
     //修改永生花
