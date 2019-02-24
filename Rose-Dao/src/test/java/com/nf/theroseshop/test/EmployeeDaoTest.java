@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -105,6 +106,20 @@ public class EmployeeDaoTest {
 
     }
 
+
+    @Test
+    public void delete(){
+
+//        Integer[1, 0x2]
+//        Integer[]
+        List<Integer> list=new ArrayList<Integer>();
+        list.add(80);
+        list.add(97);
+
+
+        System.out.println(employeeDao.deleteEmployeebyList(list));
+
+    }
 
 
 

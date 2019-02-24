@@ -119,11 +119,12 @@
         delete from employee where employee_id=#{employee_id}
     </delete>
 
+
     <!--多删除-->
     <delete id="deleteEmployeebyList">
         delete from employee where employee_id in
-        <foreach collection="list" open="(" item="employee_id" separator="," close=")">
-            #{employee_id}
+        <foreach collection="list" open="(" item="ids" separator="," close=")">
+            #{ids}
         </foreach>
     </delete>
 
